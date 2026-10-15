@@ -239,8 +239,15 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
    SERVICIOS — grid con diversidad de celdas
    ============================================================ */
 .services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
 }
+.svc-badge {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--brand-dark); background: var(--brand-tint); border: 1px solid var(--brand-soft);
+  padding: 6px 12px; border-radius: 999px;
+}
+.svc-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
 .svc {
   border-radius: var(--radius-card); padding: 32px 28px; background: var(--surface);
   border: 1px solid var(--separator); box-shadow: var(--shadow-card);
@@ -550,8 +557,6 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  .services-grid { grid-template-columns: 1fr 1fr; }
-  .svc-photo { grid-column: span 2; }
   .forense-grid { grid-template-columns: 1fr; gap: 48px; }
   .forense-media > img { height: 420px; }
   .forense-quote { left: 16px; bottom: -24px; }
@@ -792,42 +797,33 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
     </div>
     <div class="services-grid">
 
-      <article class="svc svc-photo" data-reveal>
-        <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1400&q=75" alt="Inspección mecánica de vehículo con capó abierto" loading="lazy" />
+      <article class="svc svc-dark" data-reveal>
         <span class="svc-num">01</span>
-        <h3>Inspección pre-compra de vehículos</h3>
-        <p>Evaluación completa antes de firmar: estado mecánico, estructural y documental del vehículo que quieres comprar.</p>
-      </article>
-
-      <article class="svc svc-dark" data-reveal style="--d:.08s">
-        <span class="svc-num">02</span>
         <h3>Peritaje forense para juicios</h3>
         <p>Informe pericial con metodología científica y declaración como perito ante tribunales civiles y penales.</p>
-        <a class="svc-link" href="#forense">Conocer la especialidad →</a>
+        <a class="svc-link" href="blog/que-es-peritaje-mecanico-forense.html">Conocer la especialidad →</a>
       </article>
 
-      <article class="svc" data-reveal>
-        <span class="svc-num">03</span>
+      <article class="svc" data-reveal style="--d:.08s">
+        <span class="svc-num">02</span>
         <h3>Accidentes de tránsito</h3>
         <p>Reconstrucción del siniestro y determinación de la causa basal: velocidad, frenado, estado mecánico y dinámica del impacto.</p>
+        <a class="svc-link" href="blog/peritaje-accidente-de-transito.html">Cómo se reconstruye un accidente →</a>
       </article>
 
-      <article class="svc svc-tint" data-reveal style="--d:.08s">
-        <span class="svc-num">04</span>
+      <article class="svc svc-tint" data-reveal>
+        <span class="svc-num">03</span>
         <h3>Siniestros y seguros</h3>
         <p>Contrainforme técnico para impugnar liquidaciones rechazadas por la aseguradora y sustentar la reclamación.</p>
+        <a class="svc-link" href="blog/siniestro-rechazado-aseguradora.html">Qué hacer si te rechazaron →</a>
       </article>
 
-      <article class="svc" data-reveal style="--d:.16s">
-        <span class="svc-num">05</span>
-        <h3>Fallas mecánicas y vicios ocultos</h3>
-        <p>Determinación técnica del origen de la falla: defecto de fábrica, mala mantención o desperfecto preexistente a la compraventa.</p>
-      </article>
-
-      <article class="svc" data-reveal style="--d:.24s">
-        <span class="svc-num">06</span>
+      <article class="svc" data-reveal style="--d:.08s">
+        <span class="svc-num">04</span>
         <h3>Maquinaria y equipos industriales</h3>
         <p>Peritaje de maquinaria pesada, equipos productivos y flotas: fallas, valorización de daños y cumplimiento de garantías.</p>
+        <span class="svc-badge">Especialidad en minería</span>
+        <a class="svc-link" href="blog/peritaje-maquinaria-industrial-mineria.html">Peritaje de maquinaria en minería →</a>
       </article>
 
     </div>
@@ -1014,6 +1010,26 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
           <span class="post-more">Leer artículo →</span>
         </div>
       </a>
+      <a class="post" href="blog/peritaje-accidente-de-transito.html" data-reveal style="--d:.08s">
+        <div class="post-img"><img src="assets/hero-poster.jpg" alt="Vehículo chocado con el capó abierto en una intersección" loading="lazy" /></div>
+        <div class="post-body">
+          <span class="post-chip">Accidentes</span>
+          <h3>Dos versiones, un choque: cómo un peritaje reconstruye el accidente</h3>
+          <p>Velocidad, frenado, estado mecánico y dinámica del impacto: la evidencia que decide quién tiene la razón.</p>
+          <span class="post-more">Leer artículo →</span>
+        </div>
+      </a>
+
+      <a class="post" href="blog/peritaje-maquinaria-industrial-mineria.html" data-reveal style="--d:.16s">
+        <div class="post-img"><img src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?w=900&q=75" alt="Técnico interviniendo maquinaria industrial" loading="lazy" /></div>
+        <div class="post-body">
+          <span class="post-chip">Minería</span>
+          <h3>Cuando la máquina se detiene, el reloj corre: peritaje de maquinaria en la minería</h3>
+          <p>Causa raíz, valorización de daños, garantías y seguros: la evidencia técnica detrás de cada falla de equipo.</p>
+          <span class="post-more">Leer artículo →</span>
+        </div>
+      </a>
+
       <a class="post" href="blog/siniestro-rechazado-aseguradora.html" data-reveal style="--d:.08s">
         <div class="post-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=75" alt="Vehículo circulando por carretera" loading="lazy" /></div>
         <div class="post-body">
@@ -1163,7 +1179,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
               <option>Siniestro rechazado por aseguradora</option>
               <option>Falla mecánica / vicio oculto</option>
               <option>Inspección pre-compra</option>
-              <option>Maquinaria o equipo industrial</option>
+              <option>Maquinaria, equipo industrial o minería</option>
               <option>Peritaje para juicio</option>
               <option>Otro</option>
             </select>
