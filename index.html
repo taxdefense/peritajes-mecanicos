@@ -315,22 +315,39 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 /* ============================================================
    PROCESO — línea de 4 pasos
    ============================================================ */
-.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
+/* 3 pasos en tarjetas, unidas por una línea de avance */
+.process-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; position: relative; counter-reset: paso; }
 .process-grid::before {
-  content: ""; position: absolute; top: 27px; left: 7%; right: 7%; height: 2px;
+  content: ""; position: absolute; top: 58px; left: 12%; right: 12%; height: 2px; z-index: 0;
   background: linear-gradient(90deg, var(--brand-soft), var(--brand), var(--brand-soft));
-  opacity: .5;
 }
-.step { position: relative; }
-.step-num {
-  width: 54px; height: 54px; border-radius: 50%; background: var(--surface);
-  border: 2px solid var(--brand); color: var(--brand); font-weight: 900; font-size: 1.15rem;
-  display: grid; place-items: center; margin-bottom: 20px; position: relative; z-index: 2;
-  transition: all .3s var(--ease-soft);
+.step {
+  position: relative; z-index: 1; overflow: hidden; display: flex; flex-direction: column; gap: 12px;
+  background: var(--surface); border: 1px solid var(--separator); border-radius: var(--radius-card);
+  padding: 30px 28px 28px; box-shadow: var(--shadow-card);
+  transition: transform .3s var(--ease-soft), box-shadow .3s var(--ease-soft);
 }
-.step:hover .step-num { background: var(--brand); color: #fff; box-shadow: var(--shadow-cta); }
-.step h3 { font-size: 1.12rem; margin-bottom: 8px; }
-.step p { font-size: .93rem; color: var(--ink-soft); line-height: 1.6; }
+.step:hover { transform: translateY(-5px); box-shadow: var(--shadow-card-hover); }
+/* número grande de fondo, como marca de agua */
+.step::after {
+  content: attr(data-step); position: absolute; right: 14px; top: -18px; z-index: -1;
+  font-size: 8.5rem; font-weight: 900; line-height: 1; letter-spacing: -0.05em;
+  color: var(--brand-tint); pointer-events: none;
+}
+.step-icon {
+  width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--brand), var(--brand-dark)); box-shadow: var(--shadow-cta);
+}
+.step-icon svg { width: 26px; height: 26px; stroke: #fff; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.step-label { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); margin-top: 6px; }
+.step h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.step p { font-size: .96rem; color: var(--ink-soft); line-height: 1.6; }
+.step-out {
+  margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 7px;
+  font-size: .82rem; font-weight: 800; color: var(--brand-dark);
+  background: var(--brand-tint); border: 1px solid var(--brand-soft); padding: 7px 12px; border-radius: 999px;
+}
+.step-out svg { width: 14px; height: 14px; stroke: var(--brand); stroke-width: 2.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ============================================================
    GALERÍA — casillas para fotografías reales
@@ -545,8 +562,8 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .forense-grid { grid-template-columns: 1fr; gap: 48px; }
   .forense-media > img { height: 420px; }
   .forense-quote { left: 16px; bottom: -24px; }
-  .process-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
-  .process-grid::before { display: none; }
+  .process-grid { grid-template-columns: 1fr; max-width: 640px; gap: 18px; }
+  .process-grid::before { top: 40px; bottom: 40px; left: 55px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, var(--brand-soft), var(--brand), var(--brand-soft)); }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -558,7 +575,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 @media (hover: none) {
   .svc:hover, .testi:hover, .post:hover { transform: none; box-shadow: var(--shadow-card); }
   .svc:hover .svc-bg, .photo-slot:hover img, .post:hover .post-img img { transform: none; }
-  .step:hover .step-num { background: var(--surface); color: var(--brand); box-shadow: none; }
+  .step:hover { transform: none; box-shadow: var(--shadow-card); }
 }
 
 @media (max-width: 768px) {
@@ -627,10 +644,17 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .forense-ring { width: 300px; height: 300px; top: -110px; right: -150px; }
 
   /* Proceso: número a la izquierda, texto a la derecha */
-  .process-grid { grid-template-columns: 1fr; gap: 26px; }
-  .step { display: grid; grid-template-columns: 46px 1fr; column-gap: 16px; }
-  .step-num { width: 46px; height: 46px; font-size: 1rem; margin: 0; grid-row: span 2; }
-  .step h3 { margin: 10px 0 6px; }
+  .process-grid { gap: 14px; }
+  .process-grid::before { left: 43px; }
+  .step { display: grid; grid-template-columns: 48px 1fr; column-gap: 16px; row-gap: 6px; padding: 22px 20px; }
+  .step > :not(.step-icon) { grid-column: 2; }
+  .step-icon { width: 48px; height: 48px; border-radius: 14px; grid-row: 1 / span 4; }
+  .step-icon svg { width: 22px; height: 22px; }
+  .step-label { margin-top: 2px; font-size: 11px; }
+  .step h3 { font-size: 1.15rem; }
+  .step p { font-size: .93rem; }
+  .step-out { margin-top: 6px; justify-self: start; }
+  .step::after { font-size: 6rem; top: -12px; right: 10px; }
 
   /* Galería: 2 columnas para no apilar 6 fotos */
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -863,30 +887,31 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   <div class="container">
     <div class="section-head" data-reveal>
       <h2 class="display-md">Cómo trabajamos</h2>
-      <p class="lead">Un proceso claro de principio a fin, para que sepas exactamente qué esperar y cuándo.</p>
+      <p class="lead">Metodología científica en 3 pasos. Proceso claro de principio a fin.</p>
     </div>
-    <div class="process-grid">
-      <div class="step" data-reveal>
-        <div class="step-num">1</div>
+    <ol class="process-grid">
+      <li class="step" data-step="1" data-reveal>
+        <div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
+        <span class="step-label">Paso 1</span>
         <h3>Contacto y evaluación</h3>
-        <p>Nos cuentas tu caso por WhatsApp o formulario. Evaluamos la viabilidad técnica y te entregamos una cotización sin costo.</p>
-      </div>
-      <div class="step" data-reveal style="--d:.1s">
-        <div class="step-num">2</div>
-        <h3>Inspección en terreno</h3>
-        <p>Levantamiento de evidencia donde esté el vehículo o la máquina: fotografías, mediciones y registro bajo cadena de custodia.</p>
-      </div>
-      <div class="step" data-reveal style="--d:.2s">
-        <div class="step-num">3</div>
+        <p>Nos cuentas tu caso. Evaluamos la viabilidad técnica y te entregamos una propuesta para que decidas.</p>
+        <span class="step-out"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Propuesta sin costo</span>
+      </li>
+      <li class="step" data-step="2" data-reveal style="--d:.1s">
+        <div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg></div>
+        <span class="step-label">Paso 2</span>
         <h3>Análisis técnico</h3>
         <p>Estudio de la evidencia, contraste con especificaciones del fabricante y determinación de la causa raíz de la falla o siniestro.</p>
-      </div>
-      <div class="step" data-reveal style="--d:.3s">
-        <div class="step-num">4</div>
+        <span class="step-out"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Causa raíz determinada</span>
+      </li>
+      <li class="step" data-step="3" data-reveal style="--d:.2s">
+        <div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
+        <span class="step-label">Paso 3</span>
         <h3>Informe y defensa</h3>
         <p>Entrega del informe pericial con conclusiones fundadas y, si el caso lo requiere, declaración ante el tribunal.</p>
-      </div>
-    </div>
+        <span class="step-out"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Informe pericial</span>
+      </li>
+    </ol>
   </div>
 </section>
 
