@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0d2a32" />
 <title>Claudio Durán Alvial — Perito Mecánico Forense | Peritajes en todo Chile</title>
 <meta name="description" content="Claudio Durán Alvial, ingeniero civil mecánico. Peritajes mecánicos con metodología forense: accidentes de tránsito, siniestros y seguros, fallas mecánicas, maquinaria e informes periciales defendibles ante tribunales. Jurisdicción nacional." />
 <meta property="og:title" content="Claudio Durán Alvial — Perito Mecánico Forense" />
@@ -459,6 +460,9 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 .contact-data { list-style: none; margin: 36px 0; display: grid; gap: 20px; }
 .contact-data li { display: flex; align-items: flex-start; gap: 14px; font-size: 1rem; }
 .contact-data b { display: block; font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.65); margin-bottom: 2px; }
+.contact-data a { color: #fff; text-decoration: none; }
+.contact-data a:hover { text-decoration: underline; }
+.contact-data div a { display: inline-block; padding: 9px 0; margin: -9px 0; } /* zona táctil de 40px sin mover el diseño */
 .contact-ico {
   flex-shrink: 0; width: 42px; height: 42px; border-radius: 12px;
   background: rgba(255,255,255,.12); display: grid; place-items: center;
@@ -557,29 +561,158 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 768px) {
-  .section { padding: 72px 0; }
-  .stats .container { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding: 40px 24px; }
-  .services-grid, .gallery-grid, .testi-grid, .blog-grid, .faq-wrap { grid-template-columns: 1fr; }
-  .svc-photo { grid-column: span 1; min-height: 260px; }
-  .process-grid { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .form-card { padding: 28px 22px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-  .hero-content { padding-bottom: 120px; }
+/* Barra de acción inferior (solo móvil; se muestra al dejar atrás el hero) */
+.mobile-bar { display: none; }
 
-  /* Menú móvil */
-  .menu-toggle { display: block; }
+/* En pantallas táctiles el :hover queda "pegado" tras el toque: se neutraliza */
+@media (hover: none) {
+  .svc:hover, .testi:hover, .post:hover { transform: none; box-shadow: var(--shadow-card); }
+  .svc-photo:hover img, .photo-slot:hover img, .post:hover .post-img img { transform: none; }
+  .step:hover .step-num { background: var(--surface); color: var(--brand); box-shadow: none; }
+}
+
+@media (max-width: 768px) {
+  :root { --header-h: 64px; }
+  .container { padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+  .section { padding: 64px 0; }
+  .section-head { margin-bottom: 36px; }
+  .eyebrow { font-size: 11px; letter-spacing: .14em; }
+
+  /* Header */
+  .logo-mark { width: 36px; height: 36px; border-radius: 10px; font-size: 14px; }
+  .logo-text strong { font-size: 14px; }
+  .logo-text span { font-size: 10px; letter-spacing: .06em; }
+  .menu-toggle { display: block; padding: 10px; margin-right: -10px; }
+
+  /* Menú móvil: pantalla completa, bloquea el scroll del fondo */
   .nav {
     position: fixed; inset: 0; background: rgba(255,255,255,.98);
-    flex-direction: column; justify-content: center; gap: 30px;
-    opacity: 0; pointer-events: none; transition: opacity .3s var(--ease-soft);
+    flex-direction: column; justify-content: center; gap: 6px;
+    padding: calc(var(--header-h) + 12px) 24px calc(24px + env(safe-area-inset-bottom));
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .3s var(--ease-soft), visibility 0s linear .3s;
     z-index: 110;
   }
-  body.menu-open .nav { opacity: 1; pointer-events: auto; }
-  .nav a:not(.btn) { color: var(--ink) !important; font-size: 1.3rem; font-weight: 800; }
-  .nav .btn { font-size: 1.05rem; padding: 14px 30px; }
+  body.menu-open { overflow: hidden; }
+  body.menu-open .nav { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .3s var(--ease-soft); }
+  body.menu-open .logo-text strong { color: var(--ink); }
+  body.menu-open .logo-text span { color: var(--brand); }
+  body.menu-open .logo { position: relative; z-index: 120; } /* el panel del menú vive dentro del header */
+  .nav a:not(.btn) { color: var(--ink) !important; font-size: 1.3rem; font-weight: 800; padding: 12px 24px; }
+  .nav .btn { font-size: 1.05rem; padding: 16px 34px; margin-top: 18px; }
+
+  /* Hero: el video se ve; el texto se apoya en un degradé vertical */
+  .hero { min-height: 100svh; align-items: flex-end; }
+  .hero-bg-wrap { inset: -8% 0; }
+  .hero-scrim {
+    background: linear-gradient(180deg, rgba(13,42,50,.55) 0%, rgba(13,42,50,.42) 28%, rgba(13,42,50,.86) 58%, rgba(13,42,50,.97) 100%);
+  }
+  .hero-content { padding: calc(var(--header-h) + 32px) 0 calc(40px + env(safe-area-inset-bottom)); }
+  .display-lg { font-size: clamp(2.15rem, 1.2rem + 5.2vw, 2.9rem); }
+  .hero h1 { margin-bottom: 16px; }
+  .hero .lead { font-size: 1.02rem; margin-bottom: 26px; }
+  .hero-ctas { flex-direction: column; gap: 12px; }
+  .hero-ctas .btn { width: 100%; padding: 16px 24px; }
+  .scroll-cue { display: none; }
+
+  /* Cifras */
+  .stats .container { grid-template-columns: 1fr 1fr; gap: 28px 16px; padding-top: 40px; padding-bottom: 40px; }
+  .stat { padding-left: 14px; }
+  .stat b { font-size: clamp(2.1rem, 1.4rem + 3.2vw, 2.7rem); }
+  .stat:last-child b { font-size: clamp(1.6rem, 1.1rem + 2.4vw, 2rem); padding-top: .25em; }
+  .stat-label { font-size: .88rem; }
+
+  /* Servicios */
+  .services-grid { grid-template-columns: 1fr; gap: 14px; }
+  .svc { padding: 26px 22px; }
+  .svc-photo { grid-column: span 1; min-height: 300px; }
+  .svc-photo::after { background: linear-gradient(to top, rgba(13,42,50,.95) 30%, rgba(13,42,50,.45) 70%, rgba(13,42,50,.15)); }
+  .svc-link { padding: 10px 0 4px; }
+
+  /* Forense */
+  .forense-grid { gap: 40px; }
+  .forense-list { margin-top: 28px; }
+  .forense-media > img { height: 340px; }
+  .forense-quote { position: relative; left: auto; bottom: auto; max-width: none; margin: -56px 14px 0; }
+  .forense-ring { width: 300px; height: 300px; top: -110px; right: -150px; }
+
+  /* Proceso: número a la izquierda, texto a la derecha */
+  .process-grid { grid-template-columns: 1fr; gap: 26px; }
+  .step { display: grid; grid-template-columns: 46px 1fr; column-gap: 16px; }
+  .step-num { width: 46px; height: 46px; font-size: 1rem; margin: 0; grid-row: span 2; }
+  .step h3 { margin: 10px 0 6px; }
+
+  /* Galería: 2 columnas para no apilar 6 fotos */
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .photo-slot { border-radius: var(--radius-soft); }
+  .photo-slot figcaption { padding: 28px 10px 10px; font-size: .78rem; line-height: 1.25; }
+  .slot-badge { top: 8px; left: 8px; font-size: 9px; padding: 4px 9px; letter-spacing: .1em; }
+
+  /* Testimonios y blog: carrusel horizontal con snap */
+  .testi-grid, .blog-grid {
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * max(20px, env(safe-area-inset-left))); padding: 4px max(20px, env(safe-area-inset-left)) 18px;
+    scroll-padding: 0 max(20px, env(safe-area-inset-left)); scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .testi-grid::-webkit-scrollbar, .blog-grid::-webkit-scrollbar { display: none; }
+  .testi, .post { flex: 0 0 86%; scroll-snap-align: start; }
+  .testi { padding: 26px 22px; }
+  .post-img { height: 180px; }
+  .post-body { padding: 22px 22px 26px; }
+  .section .swipe-hint { display: flex; }
+
+  /* FAQ */
+  .faq-wrap { grid-template-columns: 1fr; gap: 10px; }
+  .faq-item summary { padding: 18px 18px 18px 20px; font-size: 1rem; }
+  .faq-body { padding: 0 20px 20px; font-size: .95rem; }
+
+  /* Contacto */
+  .contact-grid { gap: 40px; }
+  .contact-data { margin: 28px 0; }
+  .contact-data li { min-width: 0; }
+  .contact-data li > div, .contact-data a { overflow-wrap: anywhere; }
+  .contact .btn-wa { width: 100%; }
+  .form-grid { grid-template-columns: 1fr; gap: 14px; }
+  .form-card { padding: 28px 20px; }
+  .field input, .field select, .field textarea { font-size: 16px; padding: 14px; } /* 16px evita el zoom de iOS al enfocar */
+
+  /* Footer */
+  .footer { padding: 52px 0 calc(96px + env(safe-area-inset-bottom)); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .footer-grid > :first-child { grid-column: 1 / -1; }
+  .footer ul { gap: 0; }
+  .footer ul li { padding: 4px 0; overflow-wrap: anywhere; }
+  .footer ul a { display: block; padding: 6px 0; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+  /* Acción fija inferior: reemplaza al botón flotante de WhatsApp */
+  .wa-float { display: none; }
+  .mobile-bar {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 105;
+    padding: 10px max(14px, env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    background: rgba(255,255,255,.94); backdrop-filter: blur(12px);
+    box-shadow: 0 -1px 0 var(--separator), 0 -8px 24px rgba(50,55,60,.08);
+    transform: translateY(110%); transition: transform .35s var(--ease-soft);
+  }
+  .mobile-bar.visible { transform: none; }
+  body.menu-open .mobile-bar { transform: translateY(110%); }
+  .mobile-bar .btn { padding: 14px 12px; font-size: .95rem; }
+  .btn-call { background: var(--brand-tint); color: var(--brand); border: 1.5px solid var(--brand-soft); }
 }
+
+@media (max-width: 380px) {
+  .logo-text span { display: none; }
+  .stats .container { gap: 24px 12px; }
+  .gallery-grid { gap: 8px; }
+}
+
+/* Indicador "desliza" de los carruseles (solo visible en móvil) */
+.swipe-hint {
+  display: none; align-items: center; gap: 8px; margin: -18px 0 18px;
+  font-size: .8rem; font-weight: 800; color: var(--brand); letter-spacing: .04em;
+}
+.swipe-hint svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.5; fill: none; }
 </style>
 </head>
 <body>
@@ -833,6 +966,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
       <h2 class="display-md">Lo que dicen los clientes</h2>
       <p class="lead">Casos donde la evidencia técnica cambió el resultado.</p>
     </div>
+    <p class="swipe-hint" aria-hidden="true">Desliza para ver más <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
     <div class="testi-grid">
       <article class="testi" data-reveal>
         <span class="testi-mark" aria-hidden="true">“</span>
@@ -869,6 +1003,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
       <h2 class="display-md">Guías y artículos</h2>
       <p class="lead">Lo que necesitas saber antes de pelear con una aseguradora, comprar un usado o llegar a un juicio.</p>
     </div>
+    <p class="swipe-hint" aria-hidden="true">Desliza para ver más <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
     <div class="blog-grid">
       <a class="post" href="blog/que-es-peritaje-mecanico-forense.html" data-reveal>
         <div class="post-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=75" alt="Balanza de la justicia" loading="lazy" /></div>
@@ -987,11 +1122,11 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
         <ul class="contact-data">
           <li data-reveal>
             <span class="contact-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <div><b>Teléfono / WhatsApp</b>+56 9 8743 8047</div>
+            <div><b>Teléfono / WhatsApp</b><a href="tel:+56987438047">+56 9 8743 8047</a></div>
           </li>
           <li data-reveal style="--d:.08s">
             <span class="contact-ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
-            <div><b>Email</b>peritojudicialmecanico@gmail.com</div>
+            <div><b>Email</b><a href="mailto:peritojudicialmecanico@gmail.com">peritojudicialmecanico@gmail.com</a></div>
           </li>
           <li data-reveal style="--d:.16s">
             <span class="contact-ico"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
@@ -1092,6 +1227,18 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
+<!-- Barra de acción fija (solo móvil) -->
+<div class="mobile-bar" id="mobileBar">
+  <a href="tel:+56987438047" class="btn btn-call" aria-label="Llamar a Claudio Durán Alvial">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+    Llamar
+  </a>
+  <a href="#" class="btn btn-wa js-wa">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.06c-.24.68-1.42 1.32-1.96 1.38-.5.06-1.13.08-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.26-.29.58-.36.77-.36h.55c.18 0 .42-.07.65.49.24.58.82 2 .89 2.15.07.14.12.31.02.5-.1.19-.14.31-.29.48-.14.17-.3.37-.43.5-.14.14-.29.3-.13.59.17.29.74 1.22 1.59 1.98 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.38-.24.65-.14.26.1 1.68.79 1.97.94.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
 <script>
 /* ============================================================
    CONFIGURACIÓN — WhatsApp de Claudio Durán Alvial
@@ -1122,12 +1269,24 @@ var WHATSAPP_NUMBER = '56987438047';
     var open = document.body.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', open);
   });
-  document.querySelectorAll('.nav a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      document.body.classList.remove('menu-open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+  function closeMenu() {
+    document.body.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+  document.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') closeMenu(); });
+  window.matchMedia('(min-width: 769px)').addEventListener('change', function (m) { if (m.matches) closeMenu(); });
+
+  /* ---------- Barra de acción móvil: aparece al dejar atrás el hero ---------- */
+  var mobileBar = document.getElementById('mobileBar');
+  var heroEl = document.getElementById('inicio');
+  var contactEl = document.getElementById('contacto');
+  if (mobileBar && 'IntersectionObserver' in window) {
+    var heroVisible = true, contactVisible = false;
+    var syncBar = function () { mobileBar.classList.toggle('visible', !heroVisible && !contactVisible); };
+    new IntersectionObserver(function (en) { heroVisible = en[0].isIntersecting; syncBar(); }, { threshold: 0.15 }).observe(heroEl);
+    new IntersectionObserver(function (en) { contactVisible = en[0].isIntersecting; syncBar(); }, { rootMargin: '0px 0px -35% 0px' }).observe(contactEl);
+  }
 
   /* ---------- Reveal en scroll (Intersection Observer) ---------- */
   if (!reduced && 'IntersectionObserver' in window) {
@@ -1191,8 +1350,16 @@ var WHATSAPP_NUMBER = '56987438047';
     });
     hero.addEventListener('pointerleave', function () { tiltX = 0; tiltY = 0; });
 
+    var finePointer = window.matchMedia('(pointer: fine)').matches;
+    var heroOnScreen = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { heroOnScreen = en[0].isIntersecting; }).observe(hero);
+    }
     (function heroLoop() {
+      // en táctil no hay inclinación con puntero: basta un parallax liviano y se pausa fuera de pantalla
+      if (!heroOnScreen) { requestAnimationFrame(heroLoop); return; }
       var y = window.scrollY;
+      if (!finePointer) { heroWrap.style.transform = 'translate3d(0,' + (y * 0.2).toFixed(1) + 'px,0)'; requestAnimationFrame(heroLoop); return; }
       if (y < window.innerHeight * 1.3) {
         // lerp: el movimiento sigue al puntero con inercia suave
         curX += (tiltX - curX) * 0.06;
