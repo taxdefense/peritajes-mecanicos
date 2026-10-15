@@ -71,7 +71,18 @@ article a{color:var(--brand);font-weight:700}
 .footer a{color:#7fd4e6;text-decoration:none;font-weight:700}
 .back{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 @media (hover:none){.btn:hover{transform:none}}
+.tldr{background:var(--brand-deep);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:8px 0 0}
+.tldr-title{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#7fd4e6;margin-bottom:12px}
+.tldr-title::before{content:"";width:8px;height:8px;border-radius:50%;background:#7fd4e6}
+.tldr ul{list-style:none;display:grid;gap:10px;margin:0}
+.tldr li{position:relative;padding-left:22px;font-size:1rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.tldr li::before{content:"→";position:absolute;left:0;color:#7fd4e6;font-weight:900}
+.tldr strong{color:#fff}
+.tldr a{color:#7fd4e6;font-weight:800;text-decoration:none;display:inline-block;margin-top:14px;font-size:.92rem}
 @media(max-width:640px){
+  .tldr{padding:20px 18px;margin-top:4px}
+  .tldr li{font-size:.95rem}
+
   .container{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
   .header{height:58px}
   .header .wrap{padding:0 max(16px,env(safe-area-inset-left))}
@@ -115,11 +126,22 @@ article a{color:var(--brand);font-weight:700}
       <p class="meta">Por <b>Claudio Durán Alvial</b>, perito mecánico forense · Lectura: 4 minutos</p>
     </div>
 
+    <aside class="tldr" aria-label="Resumen">
+      <p class="tldr-title">En 30 segundos</p>
+      <ul>
+        <li>Un <strong>peritaje forense</strong> determina con método científico la causa de una falla, daño o accidente, y se presenta como prueba.</li>
+        <li>No es lo mismo que el diagnóstico del taller, un presupuesto o la opinión del mecánico de confianza.</li>
+        <li>El informe vale porque es <strong>imparcial y verificable</strong>, y el perito lo defiende ante el tribunal.</li>
+        <li>Sirve en accidentes, siniestros rechazados, vicios ocultos, reparaciones mal hechas y juicios.</li>
+      </ul>
+      <a href="#desarrollo">Leer el desarrollo completo ↓</a>
+    </aside>
+
     <div class="cover">
-      <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1400&q=75" alt="Balanza de la justicia: el peritaje mecánico forense como prueba en juicio" />
+      <img src="../assets/servicios/forense.jpg" alt="Informe técnico y evidencia mecánica en un tribunal" />
     </div>
 
-    <article>
+    <article id="desarrollo">
       <p>En las series policiales, el forense resuelve el caso en cuarenta minutos: mira una huella, dice una frase brillante y el culpable confiesa. En la vida real, la cosa es menos glamorosa y bastante más útil: cuando hay plata, un seguro o un juicio de por medio, alguien tiene que demostrar <strong>con evidencia</strong> qué le pasó a un vehículo. Eso hace un <strong>peritaje mecánico forense</strong>.</p>
 
       <h2>Qué es un peritaje mecánico forense</h2>

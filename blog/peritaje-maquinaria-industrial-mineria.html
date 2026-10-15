@@ -71,7 +71,18 @@ article a{color:var(--brand);font-weight:700}
 .footer a{color:#7fd4e6;text-decoration:none;font-weight:700}
 .back{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 @media (hover:none){.btn:hover{transform:none}}
+.tldr{background:var(--brand-deep);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:8px 0 0}
+.tldr-title{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#7fd4e6;margin-bottom:12px}
+.tldr-title::before{content:"";width:8px;height:8px;border-radius:50%;background:#7fd4e6}
+.tldr ul{list-style:none;display:grid;gap:10px;margin:0}
+.tldr li{position:relative;padding-left:22px;font-size:1rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.tldr li::before{content:"→";position:absolute;left:0;color:#7fd4e6;font-weight:900}
+.tldr strong{color:#fff}
+.tldr a{color:#7fd4e6;font-weight:800;text-decoration:none;display:inline-block;margin-top:14px;font-size:.92rem}
 @media(max-width:640px){
+  .tldr{padding:20px 18px;margin-top:4px}
+  .tldr li{font-size:.95rem}
+
   .container{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
   .header{height:58px}
   .header .wrap{padding:0 max(16px,env(safe-area-inset-left))}
@@ -115,11 +126,22 @@ article a{color:var(--brand);font-weight:700}
       <p class="meta">Por <b>Claudio Durán Alvial</b>, perito mecánico forense · Lectura: 4 minutos</p>
     </div>
 
+    <aside class="tldr" aria-label="Resumen">
+      <p class="tldr-title">En 30 segundos</p>
+      <ul>
+        <li>Determina la <strong>causa raíz</strong> de la falla: fatiga, lubricación, operación, mantención o defecto de fábrica.</li>
+        <li>Valoriza el daño y define si aplica la <strong>garantía</strong>, el contrato de mantención o la póliza.</li>
+        <li>En minería la evidencia existe (horómetro, telemetría, análisis de aceite): el informe debe estar a esa altura.</li>
+        <li>Al fallar: aísla el equipo, documenta cada etapa del desarme y respalda los datos.</li>
+      </ul>
+      <a href="#desarrollo">Leer el desarrollo completo ↓</a>
+    </aside>
+
     <div class="cover">
-      <img src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?w=1400&q=75" alt="Manos de técnico interviniendo maquinaria industrial: peritaje de equipos y causa raíz de fallas" />
+      <img src="../assets/servicios/mineria.jpg" alt="Técnico inspeccionando un camión de extracción en una mina" />
     </div>
 
-    <article>
+    <article id="desarrollo">
       <p>En una faena minera, un camión de extracción detenido no es un auto en pana: es producción que no sale, contratos que se tensionan y una pregunta que aparece a los cinco minutos y no se va más: <strong>¿de quién es la culpa?</strong> ¿Del fabricante, del mantenedor, del operador o del uso? La respuesta mueve garantías, pólizas y multas contractuales. Y no se resuelve en una reunión: se resuelve con un <strong>peritaje de maquinaria</strong>.</p>
 
       <h2>Qué hace un peritaje de maquinaria industrial y minera</h2>

@@ -241,50 +241,35 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 .services-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
 }
-.svc-badge {
-  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--brand-dark); background: var(--brand-tint); border: 1px solid var(--brand-soft);
-  padding: 6px 12px; border-radius: 999px;
-}
-.svc-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+/* Tarjeta = enlace completo: foto de fondo + resumen encima */
 .svc {
-  border-radius: var(--radius-card); padding: 32px 28px; background: var(--surface);
-  border: 1px solid var(--separator); box-shadow: var(--shadow-card);
-  transition: transform .3s var(--ease-soft), box-shadow .3s var(--ease-soft);
-  display: flex; flex-direction: column; gap: 12px; position: relative; overflow: hidden;
+  position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px;
+  min-height: 340px; padding: 30px 28px; border-radius: var(--radius-card); overflow: hidden;
+  color: #fff; text-decoration: none; background: var(--brand-deep); isolation: isolate;
+  box-shadow: var(--shadow-card); transition: transform .3s var(--ease-soft), box-shadow .3s var(--ease-soft);
+}
+.svc-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-soft); }
+.svc::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, rgba(13,42,50,.96) 0%, rgba(13,42,50,.82) 38%, rgba(13,42,50,.25) 72%, rgba(13,42,50,.05) 100%);
 }
 .svc:hover { transform: translateY(-5px); box-shadow: var(--shadow-card-hover); }
-.svc-num { font-size: 13px; font-weight: 900; color: var(--brand); letter-spacing: .1em; }
-.svc h3 { font-size: 1.22rem; letter-spacing: -0.01em; }
-.svc p { font-size: .95rem; color: var(--ink-soft); line-height: 1.6; }
-
-/* Celda fotográfica destacada */
-.svc-photo { grid-column: span 2; grid-row: span 1; min-height: 300px; justify-content: flex-end; border: 0; color: #fff; }
-.svc-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-soft); }
-.svc-photo:hover img { transform: scale(1.05); }
-.svc-photo::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(13,42,50,.9) 12%, rgba(13,42,50,.25) 55%, transparent);
+.svc:hover .svc-bg { transform: scale(1.06); }
+.svc-num { font-size: 13px; font-weight: 900; color: #7fd4e6; letter-spacing: .1em; }
+.svc h3 { font-size: 1.35rem; letter-spacing: -0.01em; line-height: 1.15; }
+.svc p { font-size: .97rem; color: rgba(255,255,255,.86); line-height: 1.55; max-width: 440px; }
+.svc-badge {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: #0d2a32; background: #7fd4e6; padding: 6px 12px; border-radius: 999px;
 }
-.svc-photo > :not(img) { position: relative; z-index: 2; }
-.svc-photo .svc-num { color: #7fd4e6; }
-.svc-photo p { color: rgba(255,255,255,.85); }
-
-/* Celda invertida teal: la especialidad */
-.svc-dark { background: linear-gradient(150deg, var(--brand) 0%, var(--brand-dark) 90%); border: 0; color: #fff; }
-.svc-dark .svc-num { color: #9fe0ee; }
-.svc-dark p { color: rgba(255,255,255,.88); }
-.svc-dark .svc-link { color: #fff; }
-
-.svc-tint { background: var(--brand-tint); border-color: var(--brand-soft); }
-
+.svc-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-deep); }
 .svc-link {
-  margin-top: auto; padding-top: 8px; font-size: .9rem; font-weight: 800;
-  color: var(--brand); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px; font-size: .92rem; font-weight: 800; color: #fff;
+  display: inline-flex; align-items: center; gap: 6px; transition: gap .2s var(--ease-soft);
 }
-.svc-link:hover { gap: 10px; }
-.svc-link { transition: gap .2s var(--ease-soft); }
+.svc-link::after { content: "→"; color: #7fd4e6; }
+.svc:hover .svc-link { gap: 11px; }
 
 /* ============================================================
    ESPECIALIDAD FORENSE — split con imagen y checklist
@@ -572,7 +557,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 /* En pantallas táctiles el :hover queda "pegado" tras el toque: se neutraliza */
 @media (hover: none) {
   .svc:hover, .testi:hover, .post:hover { transform: none; box-shadow: var(--shadow-card); }
-  .svc-photo:hover img, .photo-slot:hover img, .post:hover .post-img img { transform: none; }
+  .svc:hover .svc-bg, .photo-slot:hover img, .post:hover .post-img img { transform: none; }
   .step:hover .step-num { background: var(--surface); color: var(--brand); box-shadow: none; }
 }
 
@@ -629,10 +614,10 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 
   /* Servicios */
   .services-grid { grid-template-columns: 1fr; gap: 14px; }
-  .svc { padding: 26px 22px; }
-  .svc-photo { grid-column: span 1; min-height: 300px; }
-  .svc-photo::after { background: linear-gradient(to top, rgba(13,42,50,.95) 30%, rgba(13,42,50,.45) 70%, rgba(13,42,50,.15)); }
-  .svc-link { padding: 10px 0 4px; }
+  .svc { min-height: 272px; padding: 24px 22px; gap: 8px; }
+  .svc h3 { font-size: 1.22rem; }
+  .svc p { font-size: .93rem; }
+  .svc-link { padding-top: 4px; }
 
   /* Forense */
   .forense-grid { gap: 40px; }
@@ -797,34 +782,38 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
     </div>
     <div class="services-grid">
 
-      <article class="svc svc-dark" data-reveal>
+      <a class="svc" href="blog/que-es-peritaje-mecanico-forense.html" data-reveal>
+        <img class="svc-bg" src="assets/servicios/forense.jpg" alt="Informe técnico y evidencia mecánica presentados en un tribunal" loading="lazy" />
         <span class="svc-num">01</span>
         <h3>Peritaje forense para juicios</h3>
-        <p>Informe pericial con metodología científica y declaración como perito ante tribunales civiles y penales.</p>
-        <a class="svc-link" href="blog/que-es-peritaje-mecanico-forense.html">Ver más →</a>
-      </article>
+        <p>Informe pericial con método científico, defendido ante tribunales civiles y penales.</p>
+        <span class="svc-link">Ver más</span>
+      </a>
 
-      <article class="svc" data-reveal style="--d:.08s">
+      <a class="svc" href="blog/peritaje-accidente-de-transito.html" data-reveal style="--d:.08s">
+        <img class="svc-bg" src="assets/servicios/accidentes.jpg" alt="Vehículo chocado con el capó abierto en una intersección" loading="lazy" />
         <span class="svc-num">02</span>
         <h3>Accidentes de tránsito</h3>
-        <p>Reconstrucción del siniestro y determinación de la causa basal: velocidad, frenado, estado mecánico y dinámica del impacto.</p>
-        <a class="svc-link" href="blog/peritaje-accidente-de-transito.html">Ver más →</a>
-      </article>
+        <p>Reconstruimos el choque: velocidad, frenado, estado mecánico y causa basal.</p>
+        <span class="svc-link">Ver más</span>
+      </a>
 
-      <article class="svc svc-tint" data-reveal>
+      <a class="svc" href="blog/siniestro-rechazado-aseguradora.html" data-reveal>
+        <img class="svc-bg" src="assets/servicios/seguros.jpg" alt="Inspector registrando los daños de un vehículo siniestrado" loading="lazy" />
         <span class="svc-num">03</span>
         <h3>Siniestros y seguros</h3>
-        <p>Contrainforme técnico para impugnar liquidaciones rechazadas por la aseguradora y sustentar la reclamación.</p>
-        <a class="svc-link" href="blog/siniestro-rechazado-aseguradora.html">Ver más →</a>
-      </article>
+        <p>Contrainforme técnico para impugnar una liquidación rechazada por la aseguradora.</p>
+        <span class="svc-link">Ver más</span>
+      </a>
 
-      <article class="svc" data-reveal style="--d:.08s">
+      <a class="svc" href="blog/peritaje-maquinaria-industrial-mineria.html" data-reveal style="--d:.08s">
+        <img class="svc-bg" src="assets/servicios/mineria.jpg" alt="Técnico inspeccionando un camión de extracción en una mina a rajo abierto" loading="lazy" />
         <span class="svc-num">04</span>
         <h3>Maquinaria y equipos industriales</h3>
-        <p>Peritaje de maquinaria pesada, equipos productivos y flotas: fallas, valorización de daños y cumplimiento de garantías.</p>
+        <p>Causa raíz de fallas, valorización de daños y garantías en equipos pesados.</p>
         <span class="svc-badge">Especialidad en minería</span>
-        <a class="svc-link" href="blog/peritaje-maquinaria-industrial-mineria.html">Ver más →</a>
-      </article>
+        <span class="svc-link">Ver más</span>
+      </a>
 
     </div>
   </div>
@@ -859,7 +848,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
         </ul>
       </div>
       <div class="forense-media" data-reveal style="--d:.12s">
-        <img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=1000&q=75" alt="Perito examinando un motor con linterna en taller" loading="lazy" />
+        <img src="assets/servicios/perito.jpg" alt="Perito forense midiendo con pie de metro el disco de freno de un vehículo siniestrado, junto a un marcador de evidencia" loading="lazy" />
         <div class="forense-quote">
           <p>La evidencia técnica bien levantada puede definir el resultado de un juicio.</p>
           <span>Principio de libre valoración de la prueba</span>
@@ -1002,7 +991,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
     <p class="swipe-hint" aria-hidden="true">Desliza para ver más <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
     <div class="blog-grid">
       <a class="post" href="blog/que-es-peritaje-mecanico-forense.html" data-reveal>
-        <div class="post-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=75" alt="Balanza de la justicia" loading="lazy" /></div>
+        <div class="post-img"><img src="assets/servicios/forense.jpg" alt="Informe técnico y evidencia mecánica en un tribunal" loading="lazy" /></div>
         <div class="post-body">
           <span class="post-chip">Forense</span>
           <h3>El motor no miente: qué es (y qué no es) un peritaje forense</h3>
@@ -1011,7 +1000,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
         </div>
       </a>
       <a class="post" href="blog/peritaje-accidente-de-transito.html" data-reveal style="--d:.08s">
-        <div class="post-img"><img src="assets/hero-poster.jpg" alt="Vehículo chocado con el capó abierto en una intersección" loading="lazy" /></div>
+        <div class="post-img"><img src="assets/servicios/accidentes.jpg" alt="Vehículo chocado con el capó abierto en una intersección" loading="lazy" /></div>
         <div class="post-body">
           <span class="post-chip">Accidentes</span>
           <h3>Dos versiones, un choque: cómo un peritaje reconstruye el accidente</h3>
@@ -1021,7 +1010,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
       </a>
 
       <a class="post" href="blog/peritaje-maquinaria-industrial-mineria.html" data-reveal style="--d:.16s">
-        <div class="post-img"><img src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?w=900&q=75" alt="Técnico interviniendo maquinaria industrial" loading="lazy" /></div>
+        <div class="post-img"><img src="assets/servicios/mineria.jpg" alt="Técnico inspeccionando un camión de extracción en una mina" loading="lazy" /></div>
         <div class="post-body">
           <span class="post-chip">Minería</span>
           <h3>Cuando la máquina se detiene, el reloj corre: peritaje de maquinaria en la minería</h3>
@@ -1031,7 +1020,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
       </a>
 
       <a class="post" href="blog/siniestro-rechazado-aseguradora.html" data-reveal style="--d:.08s">
-        <div class="post-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=75" alt="Vehículo circulando por carretera" loading="lazy" /></div>
+        <div class="post-img"><img src="assets/servicios/seguros.jpg" alt="Inspector registrando los daños de un vehículo siniestrado" loading="lazy" /></div>
         <div class="post-body">
           <span class="post-chip">Seguros</span>
           <h3>La aseguradora rechazó tu siniestro. Todavía no está todo perdido.</h3>

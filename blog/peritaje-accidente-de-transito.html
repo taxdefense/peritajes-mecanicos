@@ -71,7 +71,18 @@ article a{color:var(--brand);font-weight:700}
 .footer a{color:#7fd4e6;text-decoration:none;font-weight:700}
 .back{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 @media (hover:none){.btn:hover{transform:none}}
+.tldr{background:var(--brand-deep);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:8px 0 0}
+.tldr-title{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#7fd4e6;margin-bottom:12px}
+.tldr-title::before{content:"";width:8px;height:8px;border-radius:50%;background:#7fd4e6}
+.tldr ul{list-style:none;display:grid;gap:10px;margin:0}
+.tldr li{position:relative;padding-left:22px;font-size:1rem;line-height:1.55;color:rgba(255,255,255,.9)}
+.tldr li::before{content:"→";position:absolute;left:0;color:#7fd4e6;font-weight:900}
+.tldr strong{color:#fff}
+.tldr a{color:#7fd4e6;font-weight:800;text-decoration:none;display:inline-block;margin-top:14px;font-size:.92rem}
 @media(max-width:640px){
+  .tldr{padding:20px 18px;margin-top:4px}
+  .tldr li{font-size:.95rem}
+
   .container{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
   .header{height:58px}
   .header .wrap{padding:0 max(16px,env(safe-area-inset-left))}
@@ -115,11 +126,22 @@ article a{color:var(--brand);font-weight:700}
       <p class="meta">Por <b>Claudio Durán Alvial</b>, perito mecánico forense · Lectura: 4 minutos</p>
     </div>
 
+    <aside class="tldr" aria-label="Resumen">
+      <p class="tldr-title">En 30 segundos</p>
+      <ul>
+        <li>El peritaje reconstruye el choque: <strong>dinámica del impacto, velocidad, estado mecánico y causa basal</strong>.</li>
+        <li>Sirve en causa penal, Juzgado de Policía Local, demanda civil y frente a la aseguradora.</li>
+        <li>La clave es distinguir si una falla existía <strong>antes</strong> del choque o es consecuencia de él.</li>
+        <li>Primeras 48 horas: no repares el vehículo, fotografía todo y pide pronto las grabaciones de cámaras.</li>
+      </ul>
+      <a href="#desarrollo">Leer el desarrollo completo ↓</a>
+    </aside>
+
     <div class="cover">
-      <img src="../assets/hero-poster.jpg" alt="Vehículo chocado con el capó abierto en una intersección: reconstrucción de un accidente de tránsito" />
+      <img src="../assets/servicios/accidentes.jpg" alt="Vehículo chocado con el capó abierto en una intersección" />
     </div>
 
-    <article>
+    <article id="desarrollo">
       <p>Después de un choque pasa algo curioso: los dos conductores tenían la preferencia, los dos iban despacio y los dos frenaron a tiempo. Es el efecto <em>Rashomon</em> del tránsito: cada uno cuenta su versión con total convicción. El problema es que el juez, la aseguradora o la contraparte no van a decidir por quién suena más convencido. Van a decidir por la <strong>evidencia</strong>. Y la evidencia de un accidente está en los vehículos y en el lugar, esperando que alguien la lea bien.</p>
 
       <h2>Qué determina un peritaje en un accidente de tránsito</h2>
