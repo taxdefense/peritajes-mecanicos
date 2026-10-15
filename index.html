@@ -339,8 +339,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   background: linear-gradient(135deg, var(--brand), var(--brand-dark)); box-shadow: var(--shadow-cta);
 }
 .step-icon svg { width: 26px; height: 26px; stroke: #fff; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.step-label { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--brand); margin-top: 6px; }
-.step h3 { font-size: 1.3rem; letter-spacing: -0.01em; }
+.step h3 { font-size: 1.3rem; letter-spacing: -0.01em; margin-top: 8px; }
 .step p { font-size: .96rem; color: var(--ink-soft); line-height: 1.6; }
 
 /* ============================================================
@@ -642,12 +641,11 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .process-grid::before { left: 43px; }
   .step { display: grid; grid-template-columns: 48px 1fr; column-gap: 16px; row-gap: 6px; padding: 22px 20px; }
   .step > :not(.step-icon) { grid-column: 2; }
-  .step-icon { width: 48px; height: 48px; border-radius: 14px; grid-row: 1 / span 4; }
+  .step-icon { width: 48px; height: 48px; border-radius: 14px; grid-row: 1 / span 2; }
   .step-icon svg { width: 22px; height: 22px; }
-  .step-label { margin-top: 2px; font-size: 11px; }
-  .step h3 { font-size: 1.15rem; }
+  .step h3 { font-size: 1.15rem; margin-top: 2px; }
   .step p { font-size: .93rem; }
-  .step::after { font-size: 6rem; top: -12px; right: 10px; }
+  .step::after { font-size: 4.6rem; top: auto; right: auto; bottom: -12px; left: 18px; } /* bajo el ícono: no se cruza con el texto */
 
   /* Galería: 2 columnas para no apilar 6 fotos */
   .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -885,19 +883,16 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
     <ol class="process-grid">
       <li class="step" data-step="1" data-reveal>
         <div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
-        <span class="step-label">Paso 1</span>
         <h3>Contacto y evaluación</h3>
         <p>Nos cuentas tu caso. Evaluamos la viabilidad técnica y te entregamos una propuesta para que decidas.</p>
       </li>
       <li class="step" data-step="2" data-reveal style="--d:.1s">
         <div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg></div>
-        <span class="step-label">Paso 2</span>
         <h3>Análisis técnico</h3>
         <p>Estudio de la evidencia, contraste con especificaciones del fabricante y determinación de la causa raíz de la falla o siniestro.</p>
       </li>
       <li class="step" data-step="3" data-reveal style="--d:.2s">
         <div class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
-        <span class="step-label">Paso 3</span>
         <h3>Informe y defensa</h3>
         <p>Entrega del informe pericial con conclusiones fundadas y, si el caso lo requiere, declaración ante el tribunal.</p>
       </li>
