@@ -412,6 +412,34 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 }
 
 /* ============================================================
+   EXPERIENCIA APLICADA A LA INNOVACIÓN — videos
+   ============================================================ */
+.innov { background: var(--brand-deep); color: #fff; }
+.innov h2 { color: #fff; }
+.innov .lead { color: rgba(255,255,255,.82); }
+/* columna vertical (9:16) + dos videos 16:9 apilados con la misma altura total */
+.innov-grid { display: grid; grid-template-columns: .63fr 1fr; gap: 20px; align-items: stretch; }
+.innov-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; }
+.vid {
+  position: relative; margin: 0; overflow: hidden; border-radius: var(--radius-card);
+  background: #0a1f25; box-shadow: 0 18px 48px rgba(0,0,0,.35); isolation: isolate;
+}
+.vid video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.vid-wide video { aspect-ratio: 16 / 9; }
+.vid figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 56px 22px 20px;
+  background: linear-gradient(to top, rgba(13,42,50,.95) 10%, rgba(13,42,50,.6) 55%, transparent);
+}
+.vid figcaption h3 { font-size: 1.15rem; line-height: 1.2; letter-spacing: -0.01em; }
+.vid figcaption p { margin-top: 6px; font-size: .9rem; line-height: 1.5; color: rgba(255,255,255,.82); max-width: 520px; }
+.vid-tag {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
+  padding: 6px 11px; border-radius: 999px; background: rgba(13,42,50,.78); color: #7fd4e6; backdrop-filter: blur(4px);
+}
+.vid-tag.real { background: #7fd4e6; color: var(--brand-deep); }
+
+/* ============================================================
    BLOG
    ============================================================ */
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -435,30 +463,6 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 .post p { font-size: .93rem; color: var(--ink-soft); line-height: 1.6; }
 .post-more { margin-top: auto; padding-top: 10px; font-size: .9rem; font-weight: 800; color: var(--brand); }
 
-/* ============================================================
-   FAQ — acordeón
-   ============================================================ */
-.faq-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; align-items: start; }
-.faq-item {
-  background: var(--surface); border: 1px solid var(--separator);
-  border-radius: var(--radius-soft); overflow: hidden;
-  transition: box-shadow .3s var(--ease-soft);
-}
-.faq-item[open] { box-shadow: var(--shadow-card); border-color: var(--brand-soft); }
-.faq-item summary {
-  list-style: none; cursor: pointer; display: flex; justify-content: space-between;
-  align-items: center; gap: 16px; padding: 22px 26px; font-weight: 800; font-size: 1.02rem;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-caret {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
-  background: var(--brand-tint); display: grid; place-items: center;
-  transition: transform .25s var(--ease-soft), background .25s;
-}
-.faq-caret svg { width: 12px; height: 12px; stroke: var(--brand); stroke-width: 3; fill: none; }
-.faq-item[open] .faq-caret { transform: rotate(180deg); background: var(--brand); }
-.faq-item[open] .faq-caret svg { stroke: #fff; }
-.faq-body { padding: 0 26px 24px; color: var(--ink-soft); line-height: 1.7; font-size: .96rem; max-width: 700px; }
 
 /* ============================================================
    CONTACTO — banda teal de cierre + formulario
@@ -566,6 +570,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
+  .innov-grid { grid-template-columns: .8fr 1fr; }
   .perito-grid { grid-template-columns: 1fr; gap: 40px; }
   .perito-media { max-width: 460px; }
   .forense-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -686,10 +691,15 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .post-body { padding: 22px 22px 26px; }
   .section .swipe-hint { display: flex; }
 
-  /* FAQ */
-  .faq-wrap { grid-template-columns: 1fr; gap: 10px; }
-  .faq-item summary { padding: 18px 18px 18px 20px; font-size: 1rem; }
-  .faq-body { padding: 0 20px 20px; font-size: .95rem; }
+
+  /* Innovación: una columna; el video vertical se recorta a 4:5 para no ocupar toda la pantalla */
+  .innov-grid, .innov-stack { grid-template-columns: 1fr; grid-template-rows: none; gap: 14px; }
+  .vid-tall video { aspect-ratio: 4 / 5; }
+  .vid-wide video { aspect-ratio: 4 / 3; }
+  .innov-stack .vid-wide:last-child video { object-position: 22% 50%; } /* mantiene al operador en cuadro */
+  .vid figcaption { padding: 36px 16px 14px; background: linear-gradient(to top, rgba(13,42,50,.95) 20%, rgba(13,42,50,.55) 70%, transparent); }
+  .vid figcaption h3 { font-size: 1.05rem; }
+  .vid figcaption p { font-size: .86rem; }
 
   /* Contacto */
   .contact-grid { gap: 40px; }
@@ -762,8 +772,8 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
       <a href="#forense">Forense</a>
       <a href="#proceso">Proceso</a>
       <a href="#perito">El perito</a>
+      <a href="#innovacion">Innovación</a>
       <a href="#blog">Blog</a>
-      <a href="#faq">FAQ</a>
       <a href="#contacto" class="btn btn-primary">Solicitar peritaje</a>
     </nav>
   </div>
@@ -958,6 +968,45 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   </div>
 </section>
 
+<!-- ================= EXPERIENCIA APLICADA A LA INNOVACIÓN ================= -->
+<section class="section innov" id="innovacion">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow on-dark">Innovación aplicada</span>
+      <h2 class="display-md">Experiencia aplicada a la innovación</h2>
+      <p class="lead">El mismo conocimiento técnico que respalda cada peritaje se aplica al desarrollo de soluciones para la minería: equipos y accesorios para trabajar en espacios confinados, con el operador a distancia segura.</p>
+    </div>
+    <div class="innov-grid">
+      <figure class="vid vid-tall" data-reveal>
+        <span class="vid-tag real">Prototipo real</span>
+        <video muted loop playsinline preload="none" poster="assets/innovacion/brazo-rastrillo.jpg" data-autoplay aria-label="Brazo rastrillo articulado montado en minicargadora, en prueba de taller"><source src="assets/innovacion/brazo-rastrillo.webm" type="video/webm" /><source src="assets/innovacion/brazo-rastrillo.mp4" type="video/mp4" /></video>
+        <figcaption>
+          <h3>Brazo rastrillo para limpieza bajo correas</h3>
+          <p>Brazo articulado de largo alcance para despejar derrames bajo correas transportadoras desde una distancia segura.</p>
+        </figcaption>
+      </figure>
+      <div class="innov-stack">
+        <figure class="vid vid-wide" data-reveal style="--d:.08s">
+          <span class="vid-tag">Recreación digital</span>
+          <video muted loop playsinline preload="none" poster="assets/innovacion/miniexcavadora-hz12rc.jpg" data-autoplay aria-label="Miniexcavadora despejando derrame de mineral junto a una correa transportadora"><source src="assets/innovacion/miniexcavadora-hz12rc.webm" type="video/webm" /><source src="assets/innovacion/miniexcavadora-hz12rc.mp4" type="video/mp4" /></video>
+          <figcaption>
+            <h3>Miniexcavadora para espacios confinados</h3>
+            <p>Limpieza de derrames junto a correas transportadoras, donde no entra un equipo convencional.</p>
+          </figcaption>
+        </figure>
+        <figure class="vid vid-wide" data-reveal style="--d:.16s">
+          <span class="vid-tag">Recreación digital</span>
+          <video muted loop playsinline preload="none" poster="assets/innovacion/minicargadora-hz460.jpg" data-autoplay aria-label="Minicargadora sobre orugas operada a distancia con control remoto"><source src="assets/innovacion/minicargadora-hz460.webm" type="video/webm" /><source src="assets/innovacion/minicargadora-hz460.mp4" type="video/mp4" /></video>
+          <figcaption>
+            <h3>Minicargadora operada a distancia</h3>
+            <p>Control remoto por joystick: el operador trabaja fuera de la zona de riesgo.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= BLOG ================= -->
 <section class="section section-alt" id="blog">
   <div class="container">
@@ -1014,82 +1063,6 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
           <span class="post-more">Leer artículo →</span>
         </div>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section-head" data-reveal>
-      <h2 class="display-md">Preguntas frecuentes</h2>
-    </div>
-    <div class="faq-wrap">
-      <details class="faq-item" data-reveal>
-        <summary>¿Qué es un peritaje mecánico forense?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Es un análisis técnico realizado con metodología científica para determinar la causa de una falla, un daño o un accidente, documentado en un informe pericial que puede presentarse como prueba ante tribunales, aseguradoras u otras instancias. A diferencia de un diagnóstico de taller, sus conclusiones son verificables, imparciales y defendibles en juicio.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Cuándo necesito contratar un perito mecánico?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Los casos más comunes: la aseguradora rechazó tu siniestro, tuviste un accidente y necesitas acreditar la causa, compraste un vehículo con fallas que el vendedor ocultó, una reparación quedó mal hecha, o tu abogado necesita evidencia técnica para un juicio. Si hay plata o responsabilidad en juego y la explicación es mecánica, necesitas un peritaje.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿El informe pericial sirve como prueba en un juicio?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Sí. El informe se redacta conforme a los requisitos procesales chilenos y el perito puede declarar ante el tribunal para defender sus conclusiones. Bajo el principio de libre valoración de la prueba, un informe técnico bien fundado suele tener un peso decisivo en la convicción del juez.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Qué incluye el informe pericial?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Antecedentes del caso, metodología utilizada, registro fotográfico del levantamiento de evidencia, análisis técnico con respaldo en especificaciones del fabricante y normativa aplicable, y conclusiones fundadas que responden directamente a las preguntas del encargo.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Cuánto demora un peritaje?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <!-- REEMPLAZAR: plazos reales -->
-        <p class="faq-body">Depende de la complejidad del caso y la disponibilidad del vehículo o la máquina para inspección. Como referencia general, un peritaje estándar toma [X a X días hábiles] desde la inspección hasta la entrega del informe. En la primera conversación te damos un plazo concreto para tu caso.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Cuánto cuesta y cómo se cotiza?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Cada caso se cotiza según su alcance: tipo de pericia, ubicación del bien a inspeccionar y si se requiere declaración en juicio. La evaluación inicial y la cotización no tienen costo — escríbenos por WhatsApp o por el formulario y te respondemos con un valor cerrado.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>La aseguradora ya mandó su propio perito. ¿Para qué necesito otro?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">El liquidador o perito de la compañía trabaja para la compañía. Un perito independiente revisa la misma evidencia sin ese conflicto de interés, y su contrainforme es la herramienta formal para impugnar una liquidación mal fundada. Muchos rechazos se dan vuelta justamente ahí.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Sirve el peritaje si el auto ya fue reparado o ya no lo tengo?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Puede servir, pero con alcance más limitado: se trabaja sobre fotografías, presupuestos, órdenes de trabajo, piezas reemplazadas y registros disponibles. Por eso la recomendación de oro es contactar al perito <em>antes</em> de reparar o vender: la evidencia física es la más valiosa.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Necesito tener abogado antes de pedir el peritaje?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">No. Puedes encargar el peritaje directamente y con el informe en mano decidir si conviene reclamar, negociar o demandar. Si ya tienes abogado, trabajamos coordinados con él; si no, el informe te da una base concreta para buscar uno con el caso ya armado.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>Vivo en otra ciudad. ¿Llegan hasta allá?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Sí. El servicio tiene jurisdicción nacional: la inspección se realiza donde esté el vehículo o la máquina, en cualquier región de Chile. Los costos de traslado se incluyen de forma transparente en la cotización.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Qué documentos necesito para partir?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Lo básico: padrón o factura del vehículo, y todo lo que exista según el caso — póliza y carta de rechazo de la aseguradora, parte policial, contrato de compraventa, órdenes de trabajo del taller, fotografías. Si te falta algo, no te frenes: en la primera conversación revisamos qué hay y qué se puede reconstruir.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Hacen peritajes a motos, camiones, buses y maquinaria agrícola?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Sí. La metodología pericial aplica a cualquier sistema mecánico: motocicletas, vehículos livianos y pesados, buses, maquinaria agrícola, minera e industrial, y equipos productivos en general.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>Compré un usado a un particular, no a una automotora. ¿Igual puedo reclamar?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Sí, aunque el camino legal es distinto: contra una automotora aplica la Ley del Consumidor; contra un particular, las normas de vicios ocultos del Código Civil. En ambos casos el punto de partida es el mismo — acreditar técnicamente que la falla existía antes de la compraventa, y eso es exactamente lo que hace el peritaje.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>El vehículo está retenido en el taller o en poder de la aseguradora. ¿Pueden inspeccionarlo igual?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">En general sí: como propietario tienes derecho a que tu propio perito examine el bien. Se coordina la visita con el taller o la compañía y, si hay resistencia, existen vías formales para exigir el acceso. Lo importante es actuar rápido, antes de que el vehículo sea intervenido o rematado.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Y si el resultado del peritaje no me favorece?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Se te informa con la misma claridad. El informe responde a la evidencia, no al cliente — esa imparcialidad es precisamente lo que le da valor ante un tribunal. Y saber a tiempo que un caso es débil también es un servicio: te ahorra un juicio caro y perdido de antemano.</p>
-      </details>
-      <details class="faq-item" data-reveal>
-        <summary>¿Trabajan con abogados, empresas y compañías de seguros?<span class="faq-caret"><svg viewBox="0 0 16 16"><polyline points="3 6 8 11 13 6"/></svg></span></summary>
-        <p class="faq-body">Sí. Además de particulares, el servicio atiende a estudios jurídicos que necesitan prueba pericial para sus juicios, empresas con flotas o maquinaria siniestrada, y compañías que requieren una segunda opinión técnica independiente.</p>
-      </details>
     </div>
   </div>
 </section>
@@ -1184,7 +1157,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
           <li><a href="#proceso">Proceso</a></li>
           <li><a href="#perito">El perito</a></li>
           <li><a href="#blog">Blog</a></li>
-          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="#innovacion">Innovación</a></li>
         </ul>
       </div>
       <div>
@@ -1364,6 +1337,21 @@ var WHATSAPP_NUMBER = '56987438047';
         }
       });
     }, { passive: true });
+  }
+
+  /* ---------- Videos de innovación: se reproducen solo en pantalla ---------- */
+  var vids = document.querySelectorAll('video[data-autoplay]');
+  if (reduced) {
+    vids.forEach(function (v) { v.removeAttribute('loop'); v.setAttribute('controls', ''); v.preload = 'metadata'; });
+  } else if ('IntersectionObserver' in window) {
+    var ioVid = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else { v.pause(); }
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(function (v) { ioVid.observe(v); });
   }
 
   /* ---------- WhatsApp: enlaces directos ---------- */
