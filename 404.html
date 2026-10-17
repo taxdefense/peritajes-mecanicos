@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#0d2a32" />
+<meta name="robots" content="noindex" />
+<title>Página no encontrada | Claudio Durán Alvial, perito mecánico forense</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f758a'/%3E%3Ctext x='32' y='42.5' text-anchor='middle' font-family='Arial' font-weight='900' font-size='27' fill='%23fff'%3ECD%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,900&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#32373c;--ink-soft:#4f555b;--brand:#0f758a;--brand-dark:#0b5a6b;--brand-deep:#0d2a32;--accent:#7fd4e6;--font:"Nunito Sans",ui-sans-serif,system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;font-family:var(--font);background:var(--brand-deep);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:720px;margin:0 auto;padding:48px max(20px,env(safe-area-inset-left))}
+.logo{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;margin-bottom:56px;min-height:44px}
+.logo-mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-dark));display:grid;place-items:center;font-weight:900;font-size:15px}
+.logo b{display:block;font-size:15px;font-weight:900;line-height:1.15}
+.logo small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.code{font-size:clamp(4rem,3rem + 6vw,7rem);font-weight:900;line-height:1;letter-spacing:-.04em;color:var(--accent)}
+h1{margin-top:12px;font-size:clamp(1.8rem,1.4rem + 1.8vw,2.6rem);font-weight:900;line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
+p{margin-top:16px;font-size:1.08rem;line-height:1.65;color:rgba(255,255,255,.85);max-width:56ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:999px;font-weight:800;text-decoration:none;font-size:1rem}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-dark)}
+.btn-ghost{color:#fff;border:2px solid rgba(255,255,255,.65)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+ul{list-style:none;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);display:grid;gap:0}
+ul a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent);font-weight:700;text-decoration:none}
+ul a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:480px){.actions .btn{width:100%}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="logo" href="/" data-home><span class="logo-mark">CD</span><span><b>Claudio Durán Alvial</b><small>Perito Mecánico Forense</small></span></a>
+  <p class="code" aria-hidden="true">404</p>
+  <h1>Esta página no existe (o cambió de lugar)</h1>
+  <p>Revisamos la evidencia y el enlace no lleva a ninguna parte. Puede que la dirección esté mal escrita o que el artículo se haya movido.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="/" data-home>Ir al inicio</a>
+    <a class="btn btn-ghost" href="/#contacto" data-home="#contacto">Solicitar peritaje</a>
+  </div>
+  <ul>
+    <li><a href="/#servicios" data-home="#servicios">Servicios de peritaje</a></li>
+    <li><a href="/#blog" data-home="#blog">Guías y artículos</a></li>
+    <li><a href="tel:+56987438047">Llamar al +56 9 8743 8047</a></li>
+  </ul>
+</main>
+<script>
+/* En GitHub Pages el sitio vive en /peritajes-mecanicos/; en Vercel, en la raíz. */
+(function () {
+  var base = location.pathname.indexOf('/peritajes-mecanicos/') === 0 ? '/peritajes-mecanicos/' : '/';
+  document.querySelectorAll('[data-home]').forEach(function (a) { a.setAttribute('href', base + (a.getAttribute('data-home') || '')); });
+})();
+</script>
+</body>
+</html>
