@@ -417,27 +417,63 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 .innov { background: var(--brand-deep); color: #fff; }
 .innov h2 { color: #fff; }
 .innov .lead { color: rgba(255,255,255,.82); }
-/* columna vertical (9:16) + dos videos 16:9 apilados con la misma altura total */
-.innov-grid { display: grid; grid-template-columns: .63fr 1fr; gap: 20px; align-items: stretch; }
-.innov-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; }
-.vid {
-  position: relative; margin: 0; overflow: hidden; border-radius: var(--radius-card);
-  background: #0a1f25; box-shadow: 0 18px 48px rgba(0,0,0,.35); isolation: isolate;
+/* Carrusel deslizable: cada video se activa con su botón de play */
+.innov-carousel { position: relative; }
+.innov-track {
+  display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 4px 2px 18px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
-.vid video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.vid-wide video { aspect-ratio: 16 / 9; }
-.vid figcaption {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 56px 22px 20px;
-  background: linear-gradient(to top, rgba(13,42,50,.95) 10%, rgba(13,42,50,.6) 55%, transparent);
+.innov-track::-webkit-scrollbar { display: none; }
+.vslide { flex: 0 0 64%; scroll-snap-align: start; margin: 0; }
+.vid-frame {
+  position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius-card);
+  background: #0a1f25; box-shadow: 0 18px 48px rgba(0,0,0,.35);
 }
-.vid figcaption h3 { font-size: 1.15rem; line-height: 1.2; letter-spacing: -0.01em; }
-.vid figcaption p { margin-top: 6px; font-size: .9rem; line-height: 1.5; color: rgba(255,255,255,.82); max-width: 520px; }
+.vid-frame video { display: block; width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+.vid-frame.is-vertical video { object-fit: contain; position: relative; z-index: 1; }
+/* relleno de las franjas laterales con la misma toma difuminada */
+.vid-frame.is-vertical::before {
+  content: ""; position: absolute; inset: -30px; z-index: 0;
+  background: var(--poster) center / cover; filter: blur(22px) brightness(.5) saturate(1.1);
+}
 .vid-tag {
-  position: absolute; top: 14px; left: 14px; z-index: 2;
+  position: absolute; top: 14px; left: 14px; z-index: 3;
   font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase;
   padding: 6px 11px; border-radius: 999px; background: rgba(13,42,50,.78); color: #7fd4e6; backdrop-filter: blur(4px);
 }
 .vid-tag.real { background: #7fd4e6; color: var(--brand-deep); }
+.vid-play {
+  position: absolute; inset: 0; z-index: 2; display: grid; place-items: center;
+  background: linear-gradient(to top, rgba(6,20,24,.45), rgba(6,20,24,.1)); border: 0; cursor: pointer;
+  transition: opacity .25s var(--ease-soft);
+}
+.vid-play span {
+  width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(255,255,255,.94); box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  transition: transform .25s var(--ease-soft);
+}
+.vid-play svg { width: 28px; height: 28px; fill: var(--brand); margin-left: 4px; }
+.vid-play:hover span, .vid-play:focus-visible span { transform: scale(1.08); }
+.vid-frame.is-playing .vid-play { opacity: 0; pointer-events: none; }
+.vslide figcaption { padding: 16px 4px 0; }
+.vslide figcaption h3 { font-size: 1.15rem; line-height: 1.25; letter-spacing: -0.01em; color: #fff; }
+.vslide figcaption p { margin-top: 6px; font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.78); max-width: 560px; }
+.innov-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 10px; }
+.innov-dots { display: flex; gap: 8px; }
+.innov-dots button {
+  width: 10px; height: 10px; border-radius: 999px; border: 0; padding: 0; cursor: pointer;
+  background: rgba(127,212,230,.3); transition: width .25s var(--ease-soft), background .25s;
+}
+.innov-dots button.active { width: 28px; background: #7fd4e6; }
+.innov-arrows { display: flex; gap: 10px; }
+.innov-arrows button {
+  width: 46px; height: 46px; border-radius: 50%; cursor: pointer; display: grid; place-items: center;
+  background: rgba(255,255,255,.08); border: 1.5px solid rgba(127,212,230,.45); color: #fff;
+  transition: background .2s, border-color .2s;
+}
+.innov-arrows button:hover { background: rgba(127,212,230,.18); border-color: #7fd4e6; }
+.innov-arrows button:disabled { opacity: .35; cursor: default; }
+.innov-arrows svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2.5; fill: none; }
 
 /* ============================================================
    BLOG
@@ -570,7 +606,7 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  .innov-grid { grid-template-columns: .8fr 1fr; }
+  .vslide { flex-basis: 78%; }
   .perito-grid { grid-template-columns: 1fr; gap: 40px; }
   .perito-media { max-width: 460px; }
   .forense-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -692,14 +728,14 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .section .swipe-hint { display: flex; }
 
 
-  /* Innovación: una columna; el video vertical se recorta a 4:5 para no ocupar toda la pantalla */
-  .innov-grid, .innov-stack { grid-template-columns: 1fr; grid-template-rows: none; gap: 14px; }
-  .vid-tall video { aspect-ratio: 4 / 5; }
-  .vid-wide video { aspect-ratio: 4 / 3; }
-  .innov-stack .vid-wide:last-child video { object-position: 22% 50%; } /* mantiene al operador en cuadro */
-  .vid figcaption { padding: 36px 16px 14px; background: linear-gradient(to top, rgba(13,42,50,.95) 20%, rgba(13,42,50,.55) 70%, transparent); }
-  .vid figcaption h3 { font-size: 1.05rem; }
-  .vid figcaption p { font-size: .86rem; }
+  /* Innovación: carrusel a casi todo el ancho; se desliza con el dedo */
+  .innov-track { gap: 12px; margin: 0 calc(-1 * max(20px, env(safe-area-inset-left))); padding: 4px max(20px, env(safe-area-inset-left)) 14px; scroll-padding: 0 max(20px, env(safe-area-inset-left)); }
+  .vslide { flex-basis: 88%; }
+  .vid-frame.is-vertical { aspect-ratio: 4 / 5; }
+  .vid-play span { width: 64px; height: 64px; }
+  .vslide figcaption h3 { font-size: 1.05rem; }
+  .vslide figcaption p { font-size: .88rem; }
+  .innov-arrows { display: none; }
 
   /* Contacto */
   .contact-grid { gap: 40px; }
@@ -976,32 +1012,59 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
       <h2 class="display-md">Experiencia aplicada a la innovación</h2>
       <p class="lead">El mismo conocimiento técnico que respalda cada peritaje se aplica al desarrollo de soluciones para la minería: equipos y accesorios para trabajar en espacios confinados, con el operador a distancia segura.</p>
     </div>
-    <div class="innov-grid">
-      <figure class="vid vid-tall" data-reveal>
-        <span class="vid-tag real">Prototipo real</span>
-        <video muted loop playsinline preload="none" poster="assets/innovacion/brazo-rastrillo.jpg" data-autoplay aria-label="Brazo rastrillo articulado montado en minicargadora, en prueba de taller"><source src="assets/innovacion/brazo-rastrillo.webm" type="video/webm" /><source src="assets/innovacion/brazo-rastrillo.mp4" type="video/mp4" /></video>
-        <figcaption>
-          <h3>Brazo rastrillo para limpieza bajo correas</h3>
-          <p>Brazo articulado de largo alcance para despejar derrames bajo correas transportadoras desde una distancia segura.</p>
-        </figcaption>
-      </figure>
-      <div class="innov-stack">
-        <figure class="vid vid-wide" data-reveal style="--d:.08s">
-          <span class="vid-tag">Recreación digital</span>
-          <video muted loop playsinline preload="none" poster="assets/innovacion/miniexcavadora-hz12rc.jpg" data-autoplay aria-label="Miniexcavadora despejando derrame de mineral junto a una correa transportadora"><source src="assets/innovacion/miniexcavadora-hz12rc.webm" type="video/webm" /><source src="assets/innovacion/miniexcavadora-hz12rc.mp4" type="video/mp4" /></video>
+    <div class="innov-carousel" data-reveal>
+      <div class="innov-track" id="innovTrack">
+        <figure class="vslide">
+          <div class="vid-frame">
+            <span class="vid-tag real">Prueba real en terreno</span>
+            <video muted loop playsinline preload="none" poster="assets/innovacion/prueba-chorro-agua.jpg" aria-label="Prueba real de miniexcavadora con chorro de agua a alta presión operada a distancia"><source src="assets/innovacion/prueba-chorro-agua.webm" type="video/webm" /><source src="assets/innovacion/prueba-chorro-agua.mp4" type="video/mp4" /></video>
+            <button class="vid-play" type="button" aria-label="Reproducir video"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+          </div>
+          <figcaption>
+            <h3>Chorro de agua a alta presión operado a distancia</h3>
+            <p>Prueba de alcance y barrido: miniexcavadora con boquilla de agua a presión, controlada a distancia, despejando material sin exponer al operador.</p>
+          </figcaption>
+        </figure>
+        <figure class="vslide">
+          <div class="vid-frame is-vertical" style="--poster: url(assets/innovacion/brazo-rastrillo.jpg)">
+            <span class="vid-tag real">Prototipo real</span>
+            <video muted loop playsinline preload="none" poster="assets/innovacion/brazo-rastrillo.jpg" aria-label="Brazo rastrillo articulado montado en minicargadora, en prueba de taller"><source src="assets/innovacion/brazo-rastrillo.webm" type="video/webm" /><source src="assets/innovacion/brazo-rastrillo.mp4" type="video/mp4" /></video>
+            <button class="vid-play" type="button" aria-label="Reproducir video"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+          </div>
+          <figcaption>
+            <h3>Brazo rastrillo para limpieza bajo correas</h3>
+            <p>Brazo articulado de largo alcance para despejar derrames bajo correas transportadoras desde una distancia segura.</p>
+          </figcaption>
+        </figure>
+        <figure class="vslide">
+          <div class="vid-frame">
+            <span class="vid-tag">Recreación digital</span>
+            <video muted loop playsinline preload="none" poster="assets/innovacion/miniexcavadora-hz12rc.jpg" aria-label="Miniexcavadora despejando derrame de mineral junto a una correa transportadora"><source src="assets/innovacion/miniexcavadora-hz12rc.webm" type="video/webm" /><source src="assets/innovacion/miniexcavadora-hz12rc.mp4" type="video/mp4" /></video>
+            <button class="vid-play" type="button" aria-label="Reproducir video"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+          </div>
           <figcaption>
             <h3>Miniexcavadora para espacios confinados</h3>
             <p>Limpieza de derrames junto a correas transportadoras, donde no entra un equipo convencional.</p>
           </figcaption>
         </figure>
-        <figure class="vid vid-wide" data-reveal style="--d:.16s">
-          <span class="vid-tag">Recreación digital</span>
-          <video muted loop playsinline preload="none" poster="assets/innovacion/minicargadora-hz460.jpg" data-autoplay aria-label="Minicargadora sobre orugas operada a distancia con control remoto"><source src="assets/innovacion/minicargadora-hz460.webm" type="video/webm" /><source src="assets/innovacion/minicargadora-hz460.mp4" type="video/mp4" /></video>
+        <figure class="vslide">
+          <div class="vid-frame">
+            <span class="vid-tag">Recreación digital</span>
+            <video muted loop playsinline preload="none" poster="assets/innovacion/minicargadora-hz460.jpg" aria-label="Minicargadora sobre orugas operada a distancia con control remoto"><source src="assets/innovacion/minicargadora-hz460.webm" type="video/webm" /><source src="assets/innovacion/minicargadora-hz460.mp4" type="video/mp4" /></video>
+            <button class="vid-play" type="button" aria-label="Reproducir video"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+          </div>
           <figcaption>
             <h3>Minicargadora operada a distancia</h3>
             <p>Control remoto por joystick: el operador trabaja fuera de la zona de riesgo.</p>
           </figcaption>
         </figure>
+      </div>
+      <div class="innov-nav">
+        <div class="innov-dots" id="innovDots" role="tablist" aria-label="Videos"></div>
+        <div class="innov-arrows">
+          <button type="button" id="innovPrev" aria-label="Video anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button type="button" id="innovNext" aria-label="Video siguiente"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
       </div>
     </div>
   </div>
@@ -1339,19 +1402,71 @@ var WHATSAPP_NUMBER = '56987438047';
     }, { passive: true });
   }
 
-  /* ---------- Videos de innovación: se reproducen solo en pantalla ---------- */
-  var vids = document.querySelectorAll('video[data-autoplay]');
-  if (reduced) {
-    vids.forEach(function (v) { v.removeAttribute('loop'); v.setAttribute('controls', ''); v.preload = 'metadata'; });
-  } else if ('IntersectionObserver' in window) {
-    var ioVid = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        var v = e.target;
-        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-        else { v.pause(); }
+  /* ---------- Innovación: carrusel de videos con botón de play ---------- */
+  var track = document.getElementById('innovTrack');
+  if (track) {
+    var slides = [].slice.call(track.querySelectorAll('.vslide'));
+    var frames = slides.map(function (sl) { return sl.querySelector('.vid-frame'); });
+    var stopAll = function (except) {
+      frames.forEach(function (fr) {
+        var v = fr.querySelector('video');
+        if (v !== except && !v.paused) v.pause();
       });
-    }, { threshold: 0.35 });
-    vids.forEach(function (v) { ioVid.observe(v); });
+    };
+    frames.forEach(function (fr) {
+      var v = fr.querySelector('video');
+      var btn = fr.querySelector('.vid-play');
+      btn.addEventListener('click', function () {
+        stopAll(v);
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      });
+      v.addEventListener('click', function () { v.pause(); });
+      v.addEventListener('play', function () { fr.classList.add('is-playing'); });
+      v.addEventListener('pause', function () { fr.classList.remove('is-playing'); });
+    });
+    /* pausa el video que sale de pantalla (al deslizar o al bajar en la página) */
+    if ('IntersectionObserver' in window) {
+      var ioSlide = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) { var v = e.target.querySelector('video'); if (!v.paused) v.pause(); }
+        });
+      }, { threshold: 0.4 });
+      slides.forEach(function (sl) { ioSlide.observe(sl); });
+    }
+    /* puntos y flechas */
+    var dotsBox = document.getElementById('innovDots');
+    var prev = document.getElementById('innovPrev');
+    var next = document.getElementById('innovNext');
+    var dots = slides.map(function (sl, i) {
+      var d = document.createElement('button');
+      d.type = 'button'; d.setAttribute('aria-label', 'Ir al video ' + (i + 1));
+      d.addEventListener('click', function () { goTo(i); });
+      dotsBox.appendChild(d); return d;
+    });
+    var current = function () {
+      var x = track.scrollLeft, best = 0, dist = Infinity;
+      slides.forEach(function (sl, i) {
+        var d = Math.abs(sl.offsetLeft - track.offsetLeft - x);
+        if (d < dist) { dist = d; best = i; }
+      });
+      return best;
+    };
+    var goTo = function (i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduced ? 'auto' : 'smooth' });
+    };
+    var sync = function () {
+      var c = current();
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === c); d.setAttribute('aria-current', i === c ? 'true' : 'false'); });
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (prev) prev.disabled = c === 0;
+      if (next) next.disabled = atEnd;
+    };
+    if (prev) prev.addEventListener('click', function () { goTo(current() - 1); });
+    if (next) next.addEventListener('click', function () { goTo(current() + 1); });
+    var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(sync, 60); }, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
   }
 
   /* ---------- WhatsApp: enlaces directos ---------- */
