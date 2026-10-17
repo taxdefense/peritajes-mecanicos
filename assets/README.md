@@ -1,25 +1,13 @@
-# Fotografías reales de la galería
+# Assets
 
-Coloca aquí las fotos reales del trabajo pericial con estos nombres exactos:
+| Carpeta / archivo | Uso |
+|---|---|
+| `hero-loop.webm` / `.mp4`, `hero-poster.jpg` | Video de fondo del hero y su póster (el póster se precarga: es la imagen principal de la portada). |
+| `servicios/` | Fotos de las 4 tarjetas de servicios, la sección forense y portadas del blog. |
+| `perito/` | Retrato de Claudio Durán Alvial. |
+| `blog/` | Fotos propias de los artículos (pruebas de innovación, retrato en escritorio). |
+| `innovacion/` | Videos y pósters del carrusel "Experiencia aplicada a la innovación". |
+| `og/` | Imágenes 1200×630 para compartir en redes (portada y una por artículo). |
+| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Íconos del sitio. |
 
-| Archivo          | Casilla en la web           | Sugerencia de contenido                          |
-|------------------|-----------------------------|--------------------------------------------------|
-| `pericia-01.jpg` | Inspección mecánica         | Perito revisando un motor o vehículo en terreno  |
-| `pericia-02.jpg` | Instrumental técnico        | Herramientas o instrumentos de medición          |
-| `pericia-03.jpg` | Levantamiento de evidencia  | Registro fotográfico o medición durante pericia  |
-| `pericia-04.jpg` | Maquinaria industrial       | Peritaje de maquinaria pesada o equipos          |
-| `pericia-05.jpg` | Análisis de laboratorio     | Análisis técnico o revisión de componentes       |
-| `pericia-06.jpg` | Inspección en terreno       | Vehículo inspeccionado en su ubicación           |
-
-## Cómo funciona
-
-- Mientras estos archivos **no existan**, la web muestra una imagen provisional
-  de stock con la etiqueta "Provisional" en cada casilla.
-- Al guardar tus fotos con esos nombres, la web las usa automáticamente
-  y la etiqueta desaparece. No hay que tocar el código.
-
-## Recomendaciones
-
-- Formato JPG, proporción 4:3 aproximada (ej. 1200×900 px).
-- Peso ideal: menos de 400 KB por foto (comprimir en tinypng.com si es necesario).
-- Fotos horizontales funcionan mejor que verticales en esta grilla.
+En Vercel todo lo que está aquí se sirve con caché inmutable de un año: si cambias un archivo, usa un nombre nuevo.
