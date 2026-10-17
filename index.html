@@ -498,6 +498,9 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
 .post h3 { font-size: 1.18rem; line-height: 1.3; letter-spacing: -0.01em; }
 .post p { font-size: .93rem; color: var(--ink-soft); line-height: 1.6; }
 .post-more { margin-top: auto; padding-top: 10px; font-size: .9rem; font-weight: 800; color: var(--brand); }
+/* Tarjetas destacadas: ocupan 2 columnas con imagen al costado (7 artículos = 3 filas completas) */
+.post-wide { grid-column: span 2; flex-direction: row; }
+.post-wide .post-img { flex: 0 0 46%; height: auto; min-height: 240px; }
 
 
 /* ============================================================
@@ -724,6 +727,8 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
   .testi, .post { flex: 0 0 86%; scroll-snap-align: start; }
   .testi { padding: 26px 22px; }
   .post-img { height: 180px; }
+  .post-wide { flex-direction: column; }
+  .post-wide .post-img { flex: none; height: 180px; min-height: 0; }
   .post-body { padding: 22px 22px 26px; }
   .section .swipe-hint { display: flex; }
 
@@ -1079,6 +1084,15 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
     </div>
     <p class="swipe-hint" aria-hidden="true">Desliza para ver más <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
     <div class="blog-grid">
+      <a class="post post-wide" href="blog/innovacion-minera-ingenieria-a-medida.html" data-reveal>
+        <div class="post-img"><img src="assets/blog/chorro-agua-terreno.jpg" alt="Miniexcavadora operada a distancia lanzando un chorro de agua a presión en una prueba real en terreno" loading="lazy" /></div>
+        <div class="post-body">
+          <span class="post-chip">Innovación</span>
+          <h3>Sacar al operador de la línea de fuego: innovación minera hecha a medida</h3>
+          <p>Ingeniería inversa, operación remota y mejores métodos para limpiar bajo correas transportadoras y en espacios confinados.</p>
+          <span class="post-more">Leer artículo →</span>
+        </div>
+      </a>
       <a class="post" href="blog/que-es-peritaje-mecanico-forense.html" data-reveal>
         <div class="post-img"><img src="assets/servicios/forense.jpg" alt="Informe técnico y evidencia mecánica en un tribunal" loading="lazy" /></div>
         <div class="post-body">
@@ -1118,11 +1132,20 @@ body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7.5px) ro
         </div>
       </a>
       <a class="post" href="blog/vicios-ocultos-auto-usado.html" data-reveal style="--d:.16s">
-        <div class="post-img"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900&q=75" alt="Vehículo en garaje" loading="lazy" /></div>
+        <div class="post-img"><img src="assets/servicios/perito.jpg" alt="Perito mecánico revisando un vehículo y registrando evidencia para acreditar un vicio oculto" loading="lazy" style="object-position:center 35%" /></div>
         <div class="post-body">
           <span class="post-chip">Consumidor</span>
           <h3>Compraste un auto "impecable" y a la semana quedó en pana</h3>
           <p>Vicios ocultos en la compraventa: qué dice la ley, qué prueba necesitas y cómo se acredita técnicamente.</p>
+          <span class="post-more">Leer artículo →</span>
+        </div>
+      </a>
+      <a class="post post-wide" href="blog/prueba-pericial-sana-critica.html" data-reveal style="--d:.08s">
+        <div class="post-img"><img src="assets/blog/perito-informe.jpg" alt="Claudio Durán Alvial, perito judicial e ingeniero civil mecánico, en su escritorio" loading="lazy" style="object-position:center 22%" /></div>
+        <div class="post-body">
+          <span class="post-chip">Abogados</span>
+          <h3>Cuando los argumentos legales no bastan: prueba pericial y sana crítica</h3>
+          <p>Cómo valoran los tribunales chilenos el informe de peritos y cuándo sumar al perito a la estrategia de una causa.</p>
           <span class="post-more">Leer artículo →</span>
         </div>
       </a>
