@@ -4,12 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#ffffff" />
-<!-- SEO — Keyword primaria: "peritaje mecánico forense" · Secundarias: perito mecánico, informe pericial, peritaje vehicular, prueba en juicio -->
-<title>Peritaje mecánico forense: qué es y cuándo lo necesitas</title>
-<meta name="description" content="Qué es un peritaje mecánico forense, en qué se diferencia de un diagnóstico de taller y por qué un informe pericial puede decidir tu juicio o tu reclamo. Guía en lenguaje simple." />
+<!-- SEO — Keyword primaria: "perito mecánico forense" · Secundarias: peritaje mecánico forense, perito mecánico automotriz Chile, peritaje automotriz Chile, informe pericial, peritaje mecánico del vehículo -->
+<title>Perito mecánico forense: qué hace y cuándo lo necesitas</title>
+<meta name="description" content="Qué hace un perito mecánico forense, en qué se diferencia un peritaje de un diagnóstico de taller y cuándo un informe pericial sirve como prueba en Chile." />
+<meta name="author" content="Claudio Durán Alvial" />
 <meta property="og:title" content="El motor no miente: qué es (y qué no es) un peritaje forense" />
 <meta property="og:description" content="La diferencia entre un diagnóstico de taller y una pericia con valor de prueba, explicada sin tecnicismos." />
 <meta property="og:type" content="article" />
+<meta property="og:locale" content="es_CL" />
+<meta property="article:published_time" content="2026-07-09" />
+<meta property="article:modified_time" content="2026-10-16" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet" />
@@ -18,59 +22,78 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "El motor no miente: qué es (y qué no es) un peritaje mecánico forense",
-  "author": { "@type": "Person", "name": "Claudio Durán Alvial", "jobTitle": "Perito Mecánico Forense" },
-  "inLanguage": "es-CL"
+  "description": "Qué hace un perito mecánico forense, en qué se diferencia un peritaje de un diagnóstico de taller y cuándo un informe pericial sirve como prueba en Chile.",
+  "datePublished": "2026-07-09",
+  "dateModified": "2026-10-16",
+  "inLanguage": "es-CL",
+  "articleSection": "Forense",
+  "keywords": "perito mecánico forense, peritaje mecánico forense, perito mecánico automotriz Chile, peritaje automotriz Chile, informe pericial",
+  "wordCount": 501,
+  "author": {
+    "@type": "Person",
+    "name": "Claudio Durán Alvial",
+    "jobTitle": "Perito judicial en Mecánica Automotriz, Maquinaria Industrial e Investigación de Accidentes de Tránsito",
+    "description": "Ingeniero Civil Mecánico y Doctor (PhD) por la Universitat de Lleida. Perito judicial nombrado por la Excma. Corte Suprema de Chile (bienios 2018–2026), jurisdicción nacional.",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universitat de Lleida"
+    },
+    "knowsAbout": [
+      "Peritaje mecánico forense",
+      "Mecánica automotriz",
+      "Maquinaria industrial",
+      "Investigación de accidentes de tránsito",
+      "Innovación minera"
+    ]
+  },
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Peritaje mecánico forense"
+    },
+    {
+      "@type": "Thing",
+      "name": "Informe pericial"
+    },
+    {
+      "@type": "Thing",
+      "name": "Perito mecánico automotriz"
+    }
+  ]
 }
 </script>
 <style>
 :root {
-  --surface:#fff; --surface-alt:#f7f8fa; --separator:#dfdfdf; --ink:#32373c; --ink-soft:#5b6167;
+  --surface:#fff; --surface-alt:#f7f8fa; --separator:#dfdfdf; --ink:#32373c; --ink-soft:#4f555b;
   --brand:#0f758a; --brand-dark:#0b5a6b; --brand-deep:#0d2a32; --brand-soft:#e3f0f3; --brand-tint:#f0f7f9;
   --whatsapp:#25d366; --radius:16px; --ease:cubic-bezier(.16,1,.3,1);
   --font:"Nunito Sans",ui-sans-serif,system-ui,sans-serif;
+  --measure:68ch; --body-size:1.08rem;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);color:var(--ink);background:var(--surface);text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);color:var(--ink);background:var(--surface);text-rendering:optimizeLegibility;overflow-x:hidden}
 :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
 img{max-width:100%;display:block}
 .container{max-width:760px;margin:0 auto;padding:0 24px}
 .grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
-.header{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--separator)}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:120;pointer-events:none}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#2bb3cc);transform:scaleX(0);transform-origin:0 50%}
+.header{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--separator)}
 .header .wrap{max-width:1240px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
 .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-dark));display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px}
 .logo b{font-size:14px;font-weight:900;display:block;line-height:1.1}
 .logo b+span{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
-.back{font-size:.88rem;font-weight:800;color:var(--brand);text-decoration:none}
+.back{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap;font-size:.88rem;font-weight:800;color:var(--brand);text-decoration:none}
 .back:hover{color:var(--brand-dark)}
-.hero{padding:64px 0 40px}
+.hero{padding:64px 0 32px}
 .chip{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:var(--brand-tint);border:1px solid var(--brand-soft);padding:5px 12px;border-radius:999px;margin-bottom:18px}
-h1{font-size:clamp(1.9rem,1.4rem+2.4vw,3rem);font-weight:900;letter-spacing:-.022em;line-height:1.1}
-.meta{margin-top:18px;font-size:.88rem;color:var(--ink-soft);font-weight:700}
+h1{font-size:clamp(1.9rem,1.4rem+2.2vw,2.85rem);font-weight:900;letter-spacing:-.022em;line-height:1.12;text-wrap:balance}
+.meta{margin-top:18px;font-size:.88rem;color:var(--ink-soft);font-weight:700;line-height:1.6}
 .meta b{color:var(--brand)}
-.cover{border-radius:var(--radius);overflow:hidden;margin:36px 0;box-shadow:0 8px 24px rgba(50,55,60,.08)}
-.cover img{width:100%;height:380px;object-fit:cover}
-article{padding-bottom:24px}
-article p{font-size:1.04rem;line-height:1.75;color:var(--ink-soft);margin-bottom:20px}
-article h2{font-size:1.45rem;font-weight:900;letter-spacing:-.015em;margin:40px 0 14px;color:var(--ink)}
-article ul{margin:0 0 20px 22px;color:var(--ink-soft);line-height:1.75;font-size:1.04rem}
-article li{margin-bottom:8px}
-article strong{color:var(--ink)}
-article a{color:var(--brand);font-weight:700}
-.key{background:var(--brand-tint);border-left:4px solid var(--brand);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:28px 0}
-.key p{margin:0;font-weight:700;color:var(--ink)}
-.cta{background:linear-gradient(160deg,var(--brand),var(--brand-dark));border-radius:var(--radius);color:#fff;padding:40px 36px;margin:48px 0;text-align:left}
-.cta h3{font-size:1.5rem;font-weight:900;letter-spacing:-.015em;margin-bottom:8px}
-.cta p{color:rgba(255,255,255,.85);margin-bottom:22px;line-height:1.6}
-.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 28px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s var(--ease)}
-.btn:active{transform:translateY(1px)}
-.btn-wa{background:var(--whatsapp);color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.35)}
-.btn-wa:hover{background:#1fb85a}
-.footer{background:var(--brand-deep);color:rgba(255,255,255,.7);padding:32px 0;text-align:center;font-size:.85rem}
-.footer a{color:#7fd4e6;text-decoration:none;font-weight:700}
-.back{display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
-@media (hover:none){.btn:hover{transform:none}}
+
+/* Resumen */
 .tldr{background:var(--brand-deep);color:#fff;border-radius:var(--radius);padding:24px 26px;margin:8px 0 0}
 .tldr-title{display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:#7fd4e6;margin-bottom:12px}
 .tldr-title::before{content:"";width:8px;height:8px;border-radius:50%;background:#7fd4e6}
@@ -79,10 +102,89 @@ article a{color:var(--brand);font-weight:700}
 .tldr li::before{content:"→";position:absolute;left:0;color:#7fd4e6;font-weight:900}
 .tldr strong{color:#fff}
 .tldr a{color:#7fd4e6;font-weight:800;text-decoration:none;display:inline-block;margin-top:14px;font-size:.92rem}
-@media(max-width:640px){
-  .tldr{padding:20px 18px;margin-top:4px}
-  .tldr li{font-size:.95rem}
 
+/* Portada */
+.cover{border-radius:var(--radius);overflow:hidden;margin:32px 0;box-shadow:0 8px 24px rgba(50,55,60,.08);background:var(--surface-alt)}
+.cover img{width:100%;height:380px;object-fit:cover}
+.cover figcaption{padding:12px 16px;font-size:.86rem;line-height:1.5;color:var(--ink-soft);background:var(--surface-alt)}
+
+/* Índice */
+.toc{border:1px solid var(--separator);border-radius:var(--radius);padding:20px 24px;margin:0 0 36px;background:var(--surface-alt);max-width:var(--measure)}
+.toc-title{font-size:.78rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:10px}
+.toc ol{margin:0;padding-left:22px;display:grid;gap:6px}
+.toc li{font-size:.97rem;line-height:1.45;color:var(--ink-soft)}
+.toc li::marker{color:var(--brand);font-weight:800}
+.toc a{color:var(--ink);text-decoration:none;font-weight:700}
+.toc a:hover{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+
+/* Cuerpo del artículo */
+article{padding-bottom:16px;font-size:var(--body-size);max-width:var(--measure)}
+article p{font-size:1em;line-height:1.75;color:var(--ink-soft);margin-bottom:1.25em}
+article h2{font-size:1.5rem;font-weight:900;letter-spacing:-.015em;line-height:1.25;margin:2.4em 0 .7em;color:var(--ink);scroll-margin-top:84px;text-wrap:balance}
+article h2::before{content:"";display:block;width:36px;height:3px;border-radius:3px;background:var(--brand);margin-bottom:14px}
+article h3{font-size:1.14rem;font-weight:900;letter-spacing:-.01em;line-height:1.3;margin:1.7em 0 .5em;color:var(--ink)}
+article ul,article ol{margin:0 0 1.35em 1.3em;color:var(--ink-soft);line-height:1.75;font-size:1em}
+article li{margin-bottom:.5em;padding-left:.2em}
+article li::marker{color:var(--brand)}
+article strong{color:var(--ink)}
+article a{color:var(--brand);font-weight:700;text-underline-offset:3px}
+article a:hover{color:var(--brand-dark)}
+article .note{font-size:.9em;font-style:italic;border-top:1px solid var(--separator);padding-top:16px;margin-top:28px}
+.key{background:var(--brand-tint);border-left:4px solid var(--brand);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:2em 0}
+.key p{margin:0;font-weight:700;color:var(--ink);line-height:1.6}
+
+/* Figuras */
+.fig{margin:2em 0}
+.fig img{width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(50,55,60,.08);background:var(--surface-alt)}
+.fig-portrait img{max-width:420px;margin:0 auto}
+.fig figcaption{margin-top:10px;font-size:.86em;line-height:1.55;color:var(--ink-soft)}
+.fig-portrait figcaption{max-width:420px;margin-left:auto;margin-right:auto}
+.fig-tag{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--brand-deep);color:#7fd4e6;margin-right:6px;vertical-align:1px}
+.fig-tag.tag-ia{background:#fff3d6;color:#7a5200}
+
+/* Tablas */
+.table-wrap{overflow-x:auto;margin:0 0 1.5em;border:1px solid var(--separator);border-radius:12px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:.92em;line-height:1.55}
+th,td{text-align:left;vertical-align:top;padding:12px 14px;border-bottom:1px solid var(--separator);color:var(--ink-soft)}
+th{background:var(--brand-tint);color:var(--ink);font-weight:900;font-size:.85em;letter-spacing:.04em;text-transform:uppercase}
+td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+
+/* CTA */
+.cta{background:linear-gradient(160deg,var(--brand),var(--brand-dark));border-radius:var(--radius);color:#fff;padding:40px 36px;margin:48px 0;text-align:left}
+.cta h3{font-size:1.5rem;font-weight:900;letter-spacing:-.015em;margin-bottom:8px;line-height:1.25}
+.cta p{color:rgba(255,255,255,.88);margin-bottom:22px;line-height:1.65}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 28px;font-weight:800;font-size:1rem;text-decoration:none;transition:all .2s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn-wa{background:var(--whatsapp);color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.35)}
+.btn-wa:hover{background:#1fb85a}
+
+/* Relacionados */
+.related{margin:8px 0 64px}
+.related h2{font-size:1.3rem;font-weight:900;letter-spacing:-.01em;margin-bottom:18px}
+.rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rel{display:flex;flex-direction:column;border:1px solid var(--separator);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--ink);background:var(--surface);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.rel:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(50,55,60,.1)}
+.rel-img{display:block;height:120px;overflow:hidden;background:var(--surface-alt)}
+.rel-img img{width:100%;height:100%;object-fit:cover}
+.rel-body{display:flex;flex-direction:column;gap:6px;padding:14px 16px 18px}
+.rel-chip{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.rel b{font-size:.95rem;font-weight:900;line-height:1.3}
+.rel-desc{font-size:.85rem;line-height:1.5;color:var(--ink-soft)}
+
+.footer{background:var(--brand-deep);color:rgba(255,255,255,.7);padding:32px 0;text-align:center;font-size:.85rem}
+.footer a{color:#7fd4e6;text-decoration:none;font-weight:700}
+@media (hover:none){.btn:hover,.rel:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rel,.btn{transition:none}}
+@media(max-width:760px){
+  .rel-grid{grid-template-columns:1fr}
+  .rel{flex-direction:row}
+  .rel-img{flex:0 0 108px;height:auto;min-height:100px}
+}
+@media(max-width:640px){
+  :root{--body-size:1.02rem}
+  .tldr{padding:20px 18px;margin-top:4px}
+  .tldr li{font-size:.97rem}
   .container{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
   .header{height:58px}
   .header .wrap{padding:0 max(16px,env(safe-area-inset-left))}
@@ -94,9 +196,20 @@ article a{color:var(--brand);font-weight:700}
   .meta{font-size:.84rem}
   .cover{margin:28px 0;border-radius:12px}
   .cover img{height:220px}
-  article p,article ul,article ol{font-size:1rem;line-height:1.72}
-  article h2{font-size:1.3rem;margin:34px 0 12px}
-  .key{padding:18px 18px;margin:24px 0}
+  .toc{padding:18px 18px;margin-bottom:28px}
+  article p,article ul,article ol{line-height:1.72}
+  article h2{font-size:1.32rem;margin:2.1em 0 .6em;scroll-margin-top:74px}
+  article h3{font-size:1.08rem}
+  .key{padding:18px 18px;margin:1.6em 0}
+  .fig-portrait img,.fig-portrait figcaption{max-width:100%}
+  /* Tabla apilada: cada fila es una tarjeta */
+  .table-wrap{overflow:visible;border:0;border-radius:0}
+  table,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  tr{border:1px solid var(--separator);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:var(--surface)}
+  td{padding:0;border:0}
+  td:first-child{font-size:.78em;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:4px}
+  td:nth-child(2){font-weight:800;color:var(--ink);margin-bottom:6px}
   .cta{padding:28px 22px;margin:40px 0}
   .cta h3{font-size:1.3rem}
   .cta .btn{width:100%;justify-content:center;padding:16px 20px}
@@ -107,6 +220,7 @@ article a{color:var(--brand);font-weight:700}
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span></span></div>
 
 <header class="header">
   <div class="wrap">
@@ -123,7 +237,7 @@ article a{color:var(--brand);font-weight:700}
     <div class="hero">
       <span class="chip">Forense</span>
       <h1>El motor no miente: qué es (y qué no es) un peritaje mecánico forense</h1>
-      <p class="meta">Por <b>Claudio Durán Alvial</b>, perito mecánico forense · Lectura: 4 minutos</p>
+      <p class="meta">Por <b>Claudio Durán Alvial</b>, perito judicial · Actualizado el <time datetime="2026-10-16">16 de octubre de 2026</time> · Lectura: 3 minutos</p>
     </div>
 
     <aside class="tldr" aria-label="Resumen">
@@ -137,18 +251,28 @@ article a{color:var(--brand);font-weight:700}
       <a href="#desarrollo">Leer el desarrollo completo ↓</a>
     </aside>
 
-    <div class="cover">
-      <img src="../assets/servicios/forense.jpg" alt="Informe técnico y evidencia mecánica en un tribunal" />
-    </div>
+    <figure class="cover">
+      <img src="../assets/servicios/forense.jpg" alt="Informe pericial y evidencia mecánica embalada sobre el estrado de un tribunal" />
+    </figure>
+
+    <nav class="toc" aria-label="Contenido del artículo">
+      <p class="toc-title">En este artículo</p>
+      <ol>
+        <li><a href="#que-es-un-peritaje-mecanico-forense">Qué es un peritaje mecánico forense</a></li>
+        <li><a href="#que-no-es-un-peritaje">Qué NO es un peritaje</a></li>
+        <li><a href="#como-se-construye-un-informe-pericial">Cómo se construye un informe pericial que resiste un juicio</a></li>
+        <li><a href="#cuando-necesitas-un-perito-mecanico-forense">Cuándo necesitas un perito mecánico forense</a></li>
+      </ol>
+    </nav>
 
     <article id="desarrollo">
-      <p>En las series policiales, el forense resuelve el caso en cuarenta minutos: mira una huella, dice una frase brillante y el culpable confiesa. En la vida real, la cosa es menos glamorosa y bastante más útil: cuando hay plata, un seguro o un juicio de por medio, alguien tiene que demostrar <strong>con evidencia</strong> qué le pasó a un vehículo. Eso hace un <strong>peritaje mecánico forense</strong>.</p>
+      <p>En las series policiales, el forense resuelve el caso en cuarenta minutos: mira una huella, dice una frase brillante y el culpable confiesa. En la vida real, la cosa es menos glamorosa y bastante más útil: cuando hay plata, un seguro o un juicio de por medio, alguien tiene que demostrar <strong>con evidencia</strong> qué le pasó a un vehículo. Eso hace un <strong>perito mecánico forense</strong>: un peritaje que convierte la falla en evidencia.</p>
 
-      <h2>Qué es un peritaje mecánico forense</h2>
+      <h2 id="que-es-un-peritaje-mecanico-forense">Qué es un peritaje mecánico forense</h2>
       <p>Es un análisis técnico realizado con <strong>método científico</strong> para determinar la causa de una falla, un daño o un accidente vehicular. El resultado es un <strong>informe pericial</strong>: un documento con antecedentes, mediciones, registro fotográfico y conclusiones fundadas, redactado para presentarse como prueba ante tribunales, aseguradoras u otras instancias formales.</p>
-      <p>La palabra clave es <strong>evidencia</strong>. Un peritaje no opina: mide, contrasta con las especificaciones del fabricante, documenta cada pieza bajo cadena de custodia y llega a conclusiones que otro experto podría verificar. Por eso un juez puede darle peso decisivo bajo el principio de libre valoración de la prueba.</p>
+      <p>La palabra clave es <strong>evidencia</strong>. Un peritaje no opina: mide, contrasta con las especificaciones del fabricante, documenta cada pieza bajo cadena de custodia y llega a conclusiones que otro experto podría verificar. Por eso un juez puede darle peso decisivo al <a href="prueba-pericial-sana-critica.html">valorar la prueba pericial según la sana crítica</a>.</p>
 
-      <h2>Qué NO es un peritaje</h2>
+      <h2 id="que-no-es-un-peritaje">Qué NO es un peritaje</h2>
       <p>Aquí se pierde la mayoría de los casos. Estas tres cosas <strong>no</strong> sirven como prueba pericial:</p>
       <ul>
         <li><strong>El diagnóstico del taller.</strong> Te dice qué reparar, no por qué falló ni desde cuándo. Y el mecánico rara vez querrá declarar en un juicio.</li>
@@ -160,19 +284,20 @@ article a{color:var(--brand);font-weight:700}
         <p>Regla simple: si el documento no resiste la pregunta "¿y usted cómo lo sabe?", no es una pericia.</p>
       </div>
 
-      <h2>Cómo se construye un informe pericial que resiste un juicio</h2>
+      <h2 id="como-se-construye-un-informe-pericial">Cómo se construye un informe pericial que resiste un juicio</h2>
       <p>Un <strong>peritaje vehicular</strong> serio sigue siempre el mismo camino: inspección en terreno con levantamiento de evidencia, registro bajo cadena de custodia, análisis contra normas y especificaciones técnicas, y conclusiones que responden exactamente a las preguntas del encargo. Si el caso llega a audiencia, el <strong>perito mecánico</strong> defiende sus conclusiones frente al juez y a la contraparte.</p>
       <p>La imparcialidad no es un adorno: es lo que le da valor al informe. Un perito que "acomoda" conclusiones destruye su propia prueba en el primer contrainterrogatorio.</p>
 
-      <h2>Cuándo necesitas uno</h2>
+      <h2 id="cuando-necesitas-un-perito-mecanico-forense">Cuándo necesitas un perito mecánico forense</h2>
       <ul>
         <li>Tuviste un <strong>accidente de tránsito</strong> y hay que acreditar la causa.</li>
         <li>La aseguradora <a href="siniestro-rechazado-aseguradora.html">rechazó tu siniestro</a> y necesitas un contrainforme.</li>
         <li>Compraste un vehículo con <a href="vicios-ocultos-auto-usado.html">fallas que el vendedor ocultó</a>.</li>
         <li>Una reparación quedó mal hecha o una máquina falló antes de tiempo.</li>
-        <li>Tu abogado necesita prueba técnica para un juicio.</li>
+        <li>Tu abogado necesita prueba técnica para un juicio civil, penal, laboral o de policía local.</li>
       </ul>
       <p>El patrón es uno solo: hay una disputa, la explicación es mecánica, y tu palabra no basta. Ahí el motor —bien examinado— se convierte en tu mejor testigo. Porque el motor no miente; solo hay que saber preguntarle.</p>
+      <p>El servicio es de jurisdicción nacional: atendemos casos en Santiago, Concepción, Temuco, Antofagasta, Calama y el resto de Chile, viajando a donde esté el vehículo o la evidencia.</p>
     </article>
 
     <div class="cta">
@@ -180,6 +305,24 @@ article a{color:var(--brand);font-weight:700}
       <p>Cuéntanos qué pasó. Evaluamos la viabilidad técnica y te entregamos una cotización sin costo, en cualquier región de Chile.</p>
       <a class="btn btn-wa" href="https://wa.me/56987438047?text=Hola%2C%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20peritaje%20forense%20y%20quiero%20evaluar%20mi%20caso." target="_blank" rel="noopener">Evaluar mi caso por WhatsApp</a>
     </div>
+
+    <section class="related" aria-labelledby="rel-title">
+      <h2 id="rel-title">Artículos relacionados</h2>
+      <div class="rel-grid">
+      <a class="rel" href="prueba-pericial-sana-critica.html">
+        <span class="rel-img"><img src="../assets/blog/perito-informe.jpg" alt="" loading="lazy" style="object-position:center 22%" /></span>
+        <span class="rel-body"><span class="rel-chip">Abogados</span><b>Cuando los argumentos legales no bastan: prueba pericial y sana crítica</b><span class="rel-desc">Cómo valoran los tribunales el informe de peritos y cuándo sumar al perito.</span></span>
+      </a>
+      <a class="rel" href="peritaje-accidente-de-transito.html">
+        <span class="rel-img"><img src="../assets/servicios/accidentes.jpg" alt="" loading="lazy" style="object-position:center" /></span>
+        <span class="rel-body"><span class="rel-chip">Accidentes</span><b>Dos versiones, un choque: cómo un peritaje reconstruye el accidente de tránsito</b><span class="rel-desc">Velocidad, frenado, estado mecánico y dinámica del impacto.</span></span>
+      </a>
+      <a class="rel" href="siniestro-rechazado-aseguradora.html">
+        <span class="rel-img"><img src="../assets/servicios/seguros.jpg" alt="" loading="lazy" style="object-position:center" /></span>
+        <span class="rel-body"><span class="rel-chip">Seguros</span><b>La aseguradora rechazó tu siniestro. Todavía no está todo perdido.</b><span class="rel-desc">Cómo un contrainforme técnico puede dar vuelta una liquidación mal fundada.</span></span>
+      </a>
+      </div>
+    </section>
   </div>
 </main>
 
@@ -188,6 +331,23 @@ article a{color:var(--brand);font-weight:700}
     © <span id="year"></span> Claudio Durán Alvial · Perito Mecánico Forense · <a href="../index.html">peritaje mecánico en todo Chile</a>
   </div>
 </footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+(function () {
+  var bar = document.querySelector('.progress span'), art = document.getElementById('desarrollo');
+  if (!bar || !art) return;
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var r = art.getBoundingClientRect(), total = r.height - window.innerHeight * 0.6;
+    var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 1;
+    bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+</script>
 </body>
 </html>
