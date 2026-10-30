@@ -37,26 +37,19 @@ ul a:hover{text-decoration:underline;text-underline-offset:3px}
 </head>
 <body>
 <main class="wrap">
-  <a class="logo" href="/" data-home><span class="logo-mark">CD</span><span><b>Claudio Durán Alvial</b><small>Perito Mecánico Forense</small></span></a>
+  <a class="logo" href="/"><span class="logo-mark">CD</span><span><b>Claudio Durán Alvial</b><small>Perito Mecánico Forense</small></span></a>
   <p class="code" aria-hidden="true">404</p>
   <h1>Esta página no existe (o cambió de lugar)</h1>
   <p>Revisamos la evidencia y el enlace no lleva a ninguna parte. Puede que la dirección esté mal escrita o que el artículo se haya movido.</p>
   <div class="actions">
-    <a class="btn btn-primary" href="/" data-home>Ir al inicio</a>
-    <a class="btn btn-ghost" href="/#contacto" data-home="#contacto">Solicitar peritaje</a>
+    <a class="btn btn-primary" href="/">Ir al inicio</a>
+    <a class="btn btn-ghost" href="/#contacto">Solicitar peritaje</a>
   </div>
   <ul>
-    <li><a href="/#servicios" data-home="#servicios">Servicios de peritaje</a></li>
-    <li><a href="/#blog" data-home="#blog">Guías y artículos</a></li>
+    <li><a href="/#servicios">Servicios de peritaje</a></li>
+    <li><a href="/#blog">Guías y artículos</a></li>
     <li><a href="tel:+56987438047">Llamar al +56 9 8743 8047</a></li>
   </ul>
 </main>
-<script>
-/* En GitHub Pages el sitio vive en /peritajes-mecanicos/; en Vercel, en la raíz. */
-(function () {
-  var base = location.pathname.indexOf('/peritajes-mecanicos/') === 0 ? '/peritajes-mecanicos/' : '/';
-  document.querySelectorAll('[data-home]').forEach(function (a) { a.setAttribute('href', base + (a.getAttribute('data-home') || '')); });
-})();
-</script>
 </body>
 </html>

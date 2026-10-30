@@ -2,10 +2,10 @@
 
 Sitio estático del Dr. Claudio Durán Alvial, ingeniero civil mecánico y perito judicial nombrado por la Excma. Corte Suprema de Chile (Mecánica Automotriz, Maquinaria Industrial e Investigación de Accidentes de Tránsito, jurisdicción nacional).
 
-- Dominio definitivo: **https://peritomecanico.cl** (Vercel)
-- Copia de trabajo: https://taxdefense.github.io/peritajes-mecanicos/ (GitHub Pages)
+- Sitio publicado: **https://peritomecanico.cl** (Vercel, proyecto `peritajes-mecanicos`).
+- Este repositorio es el **respaldo del código y la fuente del despliegue**: cada `git push` a `main` publica en Vercel. GitHub Pages está desactivado a propósito; no debe existir otra copia pública del sitio para no duplicar contenido ante Google.
 
-HTML, CSS y JS puros, sin dependencias ni paso de compilación. Los enlaces internos son relativos y terminan en `.html`, así que el mismo código funciona en GitHub Pages (subcarpeta) y en Vercel (raíz).
+HTML, CSS y JS puros, sin dependencias ni paso de compilación. Los enlaces internos son relativos y terminan en `.html`.
 
 ## Estructura
 
@@ -16,7 +16,7 @@ HTML, CSS y JS puros, sin dependencias ni paso de compilación. Los enlaces inte
 | `assets/` | Video y póster del hero, fotos de servicios, del perito y del blog, videos de innovación. |
 | `assets/og/` | Imágenes para redes sociales (1200×630): `portada.jpg` y una por artículo, con el mismo nombre que su archivo. |
 | `assets/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `/favicon.ico` | Íconos a partir del monograma "CD". |
-| `404.html` | Página de error con la marca. Funciona en ambos hostings. |
+| `404.html` | Página de error con la marca; sus enlaces apuntan a la raíz del dominio. |
 | `robots.txt`, `sitemap.xml` | Apuntan a `https://peritomecanico.cl/`. |
 | `vercel.json` | `cleanUrls: false`, `trailingSlash: false`, cabeceras de seguridad (HSTS, X-Frame-Options, etc.) y caché larga e inmutable para `/assets/`. |
 
